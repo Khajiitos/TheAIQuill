@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@types/mysql": "^2.15.24",
+    "marked": "^10.0.0",
     "mysql": "^2.18.1",
     "next": "14.0.1",
     "openai": "^4.16.1",

@@ -17,7 +17,13 @@ function query(db: Pool, sql: string | QueryOptions, values: any) {
 }
 
 export default async function Home() {
-  const response: Array<ArticleInfo> = await query(db, "SELECT * FROM article", []) as Array<ArticleInfo>;
+  let response: Array<ArticleInfo>;
+  try {
+    response = await query(db, "SELECT * FROM article ORDER BY creation_date DESC", []) as Array<ArticleInfo>;
+  } catch(e) {
+    response = [];
+  }
+  
   console.log(response);
 
   return (
