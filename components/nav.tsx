@@ -1,5 +1,3 @@
-import styles from "./nav.module.css";
-import Image from 'next/image'
 
 export default function Navigation() {
 	return (

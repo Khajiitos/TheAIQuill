@@ -20,7 +20,7 @@ export default async function ArticlePage(props: {params: {slug: string}}) {
   const data = response.length === 1 ? response[0] : null;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-slate-500">
+    <main className="flex min-h-screen flex-col items-center justify-between pt-5">
         <Article articleData={data}></Article>
     </main>
   )
