@@ -26,8 +26,6 @@ export default async function Home() {
     response = [];
   }
   
-  console.log(response);
-
   return (
     <main className="">
       <h3 className='text-center font-semibold text-4xl m-5 text-white'>Available articles</h3>

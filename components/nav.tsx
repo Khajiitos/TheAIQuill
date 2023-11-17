@@ -14,13 +14,13 @@ export default function Navigation() {
 				</div>
 				<div className="flex">
 					<Link href="/article/random">
-						<div className="bg-green-800 hover:bg-green-700 p-3 shadow-md transition-colors h-full text-xl">
+						<div className="bg-green-800 hover:bg-green-700 p-3 shadow-md transition-colors h-full text-xl flex justify-center items-center">
 							<p>Random article</p>
 						</div>
 					</Link>
 					<Link href="/about">
-						<div className="bg-green-800 hover:bg-green-700 p-3 shadow-md transition-colors h-full text-xl">
-							<p className="align-middle h-full">About</p>
+						<div className="bg-green-800 hover:bg-green-700 p-3 shadow-md transition-colors h-full text-xl flex justify-center items-center">
+							<p>About</p>
 						</div>
 					</Link>
 				</div>

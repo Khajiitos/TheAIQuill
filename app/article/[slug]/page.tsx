@@ -17,6 +17,8 @@ function query(db: Pool, sql: string | QueryOptions, values: any) {
   });
 }
 
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata(props: {params: {slug: string}}) : Promise<Metadata> {
   const response: any = await query(db, "SELECT * FROM article WHERE slug = ?", [props.params.slug]);
 

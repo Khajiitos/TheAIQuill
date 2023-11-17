@@ -1,6 +1,9 @@
+'use server'
+
 import Article from '@/components/article';
 import { ArticleInfo } from '@/types/articles';
 import { Pool, QueryFunction, QueryOptions } from 'mysql';
+import { GetServerSideProps } from 'next';
 import { redirect } from 'next/navigation';
 const db = require('@/lib/db');
 
@@ -19,11 +22,16 @@ function query(db: Pool, sql: string | QueryOptions, values: any) {
 export default async function RandomArticlePage() {
   const response: Array<ArticleInfo> = await query(db, "SELECT * FROM article", []) as Array<ArticleInfo>;
 
+  let destination;
+
   if (response.length === 0) {
-    redirect('/');
+    destination = '/';
   } else {
     const id = Math.floor(Math.random() * response.length);
-    console.log('ID: ' + id + " Length: " + response.length);
-    redirect('/article/' + response[id].slug); 
+    destination = '/article/' + response[id].slug; 
   }
+
+  console.log('Redirect to ' + destination);
+
+  redirect(destination);
 }
