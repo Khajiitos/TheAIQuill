@@ -24,6 +24,8 @@ export default async function SuggestionsPage() {
   let totalCount = 0;
   response.forEach(obj => totalCount += obj.tag_count);
 
+  console.log(response);
+
   return (
     <main className="bg-green-600 mt-3 text-white p-8">
         <h1 className="text-3xl font-bold mb-6">Suggestions</h1>
