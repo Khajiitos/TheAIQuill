@@ -13,6 +13,8 @@ function query(db: Pool, sql: string | QueryOptions, values: any) {
   });
 }
 
+export const dynamic = 'force-dynamic';
+
 export default async function SuggestionsPage() {
   interface TagAndCount {
     tag: string,
