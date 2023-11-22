@@ -29,7 +29,7 @@ export default async function SuggestionsPage() {
         <h1 className="text-3xl font-bold mb-6">Suggestions</h1>
         <p>This page contains a list of suggested tags</p>
 
-        <table className='mt-5 [&>*]:border border-collapse rounded'>
+        <table className='mt-5 [&>*]:border border-collapse rounded table-auto'>
           <thead>
             <tr>
               <th>Tag</th>
