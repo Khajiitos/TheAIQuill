@@ -29,24 +29,24 @@ export default async function SuggestionsPage() {
   return (
     <main className="bg-green-600 mt-3 text-white p-8">
         <h1 className="text-3xl font-bold mb-6">Suggestions</h1>
-        <p>This page contains a list of suggested tags</p>
+        <p>This page contains a list of suggested tags.</p>
 
-        <table className='mt-5 [&>*]:border border-collapse rounded table-auto'>
+        {response.length === 0 ? <p className='text-red-400 mt-5 font-semibold'>But there are no suggested tags!</p> : <table className='mt-5 border-collapse border bg-green-700'>
           <thead>
-            <tr>
-              <th>Tag</th>
-              <th>Chance</th>
-            </tr>
+          <tr>
+            <th className='py-4 px-6 border'>Tag</th>
+            <th className='py-4 px-6 border'>Chance</th>
+          </tr>
           </thead>
           <tbody>
-            {response.map(obj => (
-              <tr key={obj.tag}>
-                <td>{obj.tag}</td>
-                <td>{((obj.tag_count / totalCount) * 100).toFixed(1)}%</td>
-              </tr>
-            ))}
+          {response.map(obj => (
+            <tr key={obj.tag} className='border-t'>
+              <td className='py-4 px-6 border'>{obj.tag}</td>
+              <td className='py-4 px-6 border'>{((obj.tag_count / totalCount) * 100).toFixed(1)}%</td>
+            </tr>
+          ))}
           </tbody>
-        </table>
+        </table>}
     </main>
   )
 }

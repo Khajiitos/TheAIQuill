@@ -13,11 +13,11 @@ export default function Navigation() {
 					</Link>
 				</div>
 				<div className="flex">
-					<Link href="/article/random" prefetch={false}>
+					{/*<Link href="/article/random" prefetch={false}>
 						<div className="bg-green-800 hover:bg-green-700 p-3 shadow-md transition-colors h-full text-xl flex justify-center items-center">
 							<p>Random article</p>
 						</div>
-					</Link>
+					</Link>*/}
 					<Link href="/suggest">
 						<div className="bg-green-800 hover:bg-green-700 p-3 shadow-md transition-colors h-full text-xl flex justify-center items-center">
 							<p>Suggest</p>

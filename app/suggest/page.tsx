@@ -1,7 +1,7 @@
+'use client'
+
 import Link from "next/link";
 import { FormEvent, FormEventHandler } from "react";
-
-'use client'
 
 const regex = /[A-Za-z0-9\.\-]+/;
 
@@ -53,7 +53,7 @@ export default function SuggestPage() {
         <p>Here you will be able to suggest an article tag for the next article that gets generated.</p>
         <p><b>You can only suggest one tag.</b> After an article gets generated, you can do that again.</p>
         <p>When an article gets generated, one random suggested tag gets selected, rest are cleared.</p>
-        <p>The tag you suggest has to be one word, some special characters are allowed.</p>
+        <p>You can view what tags are suggested for the next article <Link href="/suggestions" className="text-blue-300 underline">here</Link>.</p>
 
         <form className="mt-8" onSubmit={onSubmit}>
           <p className="font-semibold mb-1">Your suggestion</p>
