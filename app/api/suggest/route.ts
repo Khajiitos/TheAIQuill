@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 
     if (json.suggestion) {
         if (regex.test(json.suggestion)) {
-            console.log(ipAddress + ' suggested: ' + json.suggestion);
+            console.log('[' + new Date().toISOString() + '] ' + ipAddress + ' suggested: ' + json.suggestion);
 
             await query(db, "INSERT INTO suggestion (ip_address, tag) VALUES (?, ?)", [ipAddress, json.suggestion]);
 

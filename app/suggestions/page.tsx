@@ -21,7 +21,7 @@ export default async function SuggestionsPage() {
     tag_count: number
   }
 
-  const response: Array<TagAndCount> = await query(db, "SELECT tag, COUNT(tag) AS tag_count FROM suggestion", []) as Array<TagAndCount>;
+  const response: Array<TagAndCount> = await query(db, "SELECT tag, COUNT(tag) AS tag_count FROM suggestion WHERE tag IS NOT NULL", []) as Array<TagAndCount>;
 
   let totalCount = 0;
   response.forEach(obj => totalCount += obj.tag_count);
