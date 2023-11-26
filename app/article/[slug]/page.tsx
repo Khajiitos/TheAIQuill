@@ -30,7 +30,14 @@ export async function generateMetadata(props: {params: {slug: string}}) : Promis
 
   return {
     title: data.article_header + " - The AI Quill",
-    description: data.article_description
+    description: data.article_description,
+    openGraph: {
+      title: data.article_header,
+      description: data.article_description,
+      type: 'article',
+      publishedTime: data.creation_date.toISOString(),
+      authors: ['GPT-3.5-turbo']
+    }
   }
 }
 

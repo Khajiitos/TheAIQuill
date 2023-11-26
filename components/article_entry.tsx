@@ -12,6 +12,7 @@ export default async function ArticleEntry(props: {articleInfo: ArticleInfo}) {
         year: 'numeric',
         hour: '2-digit',
         minute: '2-digit',
+        hourCycle: 'h23',
         hour12: false,
     });
       

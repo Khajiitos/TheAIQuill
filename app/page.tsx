@@ -28,7 +28,7 @@ export default async function Home() {
   
   return (
     <main className="">
-      <h3 className='text-center font-semibold text-4xl m-5 text-white'>Available articles</h3>
+      <h3 className='text-center font-semibold text-4xl m-5 text-white'>Latest articles</h3>
 
       <div className='flex justify-center content-center flex-row'>
         <ArticleContainer articles={response}></ArticleContainer>

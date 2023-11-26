@@ -9,8 +9,16 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'The AI Quill',
-  description: 'Blog written by AI',
-  authors: [{name: "Khajiitos"}]
+  description: 'Blog written by AI - find and suggest interesting content about anything you can think of!',
+  authors: [{name: "Khajiitos", url: "https://khajiitos.fun"}],
+  creator: "Khajiitos",
+  publisher: "GPT-3.5-turbo",
+  keywords: ['blog', 'ai', 'openai', 'chatgpt', 'gpt', 'articles', 'user input', 'interactive'],
+  robots: {
+    index: true,
+    follow: true
+  },
+  metadataBase: new URL('https://theaiquill.site'),
 }
 
 export default function RootLayout({
