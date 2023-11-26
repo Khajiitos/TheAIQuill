@@ -22,9 +22,7 @@ export default async function SuggestionsPage() {
   }
 
   const response: Array<TagAndCount> = await query(db, "SELECT tag, COUNT(tag) AS tag_count FROM suggestion WHERE tag IS NOT NULL GROUP BY tag", []) as Array<TagAndCount>;
-
-  console.log(response);
-  
+    
   let totalCount = 0;
   response.forEach(obj => totalCount += obj.tag_count);
 
