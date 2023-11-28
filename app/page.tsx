@@ -1,27 +1,13 @@
 import ArticleContainer from '@/components/article_container';
 import { ArticleInfo } from '@/types/articles';
-import { Pool, QueryOptions } from 'mysql';
-import Link from 'next/link';
-const db = require('@/lib/db');
-
-function query(db: Pool, sql: string | QueryOptions, values: any) {
-  return new Promise((resolve, reject) => {
-    db.query(sql, values, (error, results) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(results);
-      }
-    });
-  });
-}
+import { query } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   let response: Array<ArticleInfo>;
   try {
-    response = await query(db, "SELECT * FROM article ORDER BY creation_date DESC", []) as Array<ArticleInfo>;
+    response = await query("SELECT * FROM article ORDER BY creation_date DESC", []) as Array<ArticleInfo>;
   } catch(e) {
     response = [];
   }

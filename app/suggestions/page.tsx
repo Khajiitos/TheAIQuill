@@ -1,17 +1,4 @@
-import { Pool, QueryFunction, QueryOptions } from 'mysql';
-const db = require('@/lib/db');
-
-function query(db: Pool, sql: string | QueryOptions, values: any) {
-  return new Promise((resolve, reject) => {
-    db.query(sql, values, (error, results) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(results);
-      }
-    });
-  });
-}
+import { query } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +8,7 @@ export default async function SuggestionsPage() {
     tag_count: number
   }
 
-  const response: Array<TagAndCount> = await query(db, "SELECT tag, COUNT(tag) AS tag_count FROM suggestion WHERE tag IS NOT NULL GROUP BY tag", []) as Array<TagAndCount>;
+  const response: Array<TagAndCount> = await query("SELECT tag, COUNT(tag) AS tag_count FROM suggestion WHERE tag IS NOT NULL GROUP BY tag", []) as Array<TagAndCount> || [];
     
   let totalCount = 0;
   response.forEach(obj => totalCount += obj.tag_count);

@@ -1,22 +1,10 @@
 import { ArticleInfo } from '@/types/articles';
-import { Pool, QueryFunction, QueryOptions } from 'mysql';
-const db = require('@/lib/db');
+import { query } from '@/lib/db';
 
-function query(db: Pool, sql: string | QueryOptions, values: any) {
-  return new Promise((resolve, reject) => {
-    db.query(sql, values, (error, results) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(results);
-      }
-    });
-  });
-}
 export const dynamic = 'force-dynamic' // defaults to force-static
 
 export async function GET(req: Request) {
-    const response: Array<ArticleInfo> = await query(db, "SELECT * FROM article", []) as Array<ArticleInfo>;
+    const response: Array<ArticleInfo> = await query("SELECT * FROM article", []) as Array<ArticleInfo> || [];
 
     let destination;
   
@@ -26,6 +14,7 @@ export async function GET(req: Request) {
       const id = Math.floor(Math.random() * response.length);
       destination = '/article/' + response[id].slug; 
     }
-    
+
+    console.log(req.url);
     return Response.redirect(req.headers.get('host') + destination);
 }
