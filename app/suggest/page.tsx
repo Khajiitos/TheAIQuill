@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FormEvent, FormEventHandler } from "react";
 
-const regex = /[A-Za-z0-9\.\-]+/;
+const regex = /^[A-Za-z0-9 .:-]+$/;
 
 export default function SuggestPage() {
 

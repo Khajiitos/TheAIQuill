@@ -1,20 +1,7 @@
-import { Pool, QueryFunction, QueryOptions } from 'mysql';
 import { NextRequest } from 'next/server';
-const db = require('@/lib/db');
+import { query } from '@/lib/db';
 
-function query(db: Pool, sql: string | QueryOptions, values: any) {
-  return new Promise((resolve, reject) => {
-    db.query(sql, values, (error, results) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(results);
-      }
-    });
-  });
-}
-
-const regex = /[A-Za-z0-9\.\-]+/;
+const regex = /^[A-Za-z0-9 .:-]+$/;
 
 export async function POST(req: NextRequest) {
     let ipAddress: string | undefined = req.headers.get('x-forwarded-for') || req.ip;
@@ -23,7 +10,7 @@ export async function POST(req: NextRequest) {
       ipAddress = ipAddress.substring(7);
     }
 
-    const response: Array<{tag: string}> = await query(db, "SELECT tag FROM suggestion WHERE ip_address = ?", [ipAddress]) as Array<{tag: string}>;
+    const response: Array<{tag: string}> = await query("SELECT tag FROM suggestion WHERE ip_address = ?", [ipAddress]) as Array<{tag: string}> || [];
 
     if (response.length != 0) {
         const tag = response[0].tag;
