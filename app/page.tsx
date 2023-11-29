@@ -5,12 +5,7 @@ import { query } from '@/lib/db';
 export const dynamic = 'force-dynamic';
 
 export default async function Home() {
-  let response: Array<ArticleInfo>;
-  try {
-    response = await query("SELECT * FROM article ORDER BY creation_date DESC", []) as Array<ArticleInfo>;
-  } catch(e) {
-    response = [];
-  }
+  const response: Array<ArticleInfo> = await query("SELECT * FROM article ORDER BY creation_date DESC", []) as Array<ArticleInfo> || [];
   
   return (
     <main className="">
