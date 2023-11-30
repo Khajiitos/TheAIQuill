@@ -4,15 +4,13 @@ import { query } from '@/lib/db';
 
 export const dynamic = 'force-dynamic';
 
-export default async function Home() {
-  const response: Array<ArticleInfo> = await query("SELECT * FROM article ORDER BY creation_date DESC", []) as Array<ArticleInfo> || [];
-  
+export default async function Home() {  
   return (
     <main className="">
       <h3 className='text-center font-semibold text-4xl m-5 text-white'>Latest articles</h3>
 
       <div className='flex justify-center content-center flex-row'>
-        <ArticleContainer articles={response}></ArticleContainer>
+        <ArticleContainer></ArticleContainer>
       </div>
     </main>
   )

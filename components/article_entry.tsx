@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArticleInfo } from "@/types/articles";
 import Image from "next/image";
 
-export default async function ArticleEntry(props: {articleInfo: ArticleInfo}) {
+export default function ArticleEntry(props: {articleInfo: ArticleInfo}) {
     const wordCount: number = props.articleInfo.article_content.split(" ").length;
     const minutesOfReading: number = Math.ceil(wordCount / 230);
       
