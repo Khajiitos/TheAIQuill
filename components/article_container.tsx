@@ -52,21 +52,22 @@ export default function ArticleContainer() {
     }
 
     useEffect(() => {
+        checkIfDiscovered();
         window.addEventListener('scroll', checkIfDiscovered);
-        window.addEventListener('load', checkIfDiscovered);
+        window.addEventListener('resize', checkIfDiscovered);
 
         return () => {
             window.removeEventListener('scroll', checkIfDiscovered);
-            window.removeEventListener('load', checkIfDiscovered);
+            window.removeEventListener('resize', checkIfDiscovered);
         }
     });
 
 	return (
-        <div className="bg-green-700 text-white container-xl p-4 rounded">
+        <div className="bg-green-700 text-white container p-4 rounded">
             {articles.length === 0 && !hasMore ? <p>Empty!</p> : articles.map(articleInfo => (
                 <ArticleEntry key={articleInfo.slug} articleInfo={articleInfo}></ArticleEntry>
             ))}
-            {hasMore && <p id="loading-paragraph" className="text-gray-300">Loading...</p>}
+            {hasMore ? <p id="loading-paragraph" className="text-gray-300 text-center">Loading...</p> : <p className="text-gray-300 text-center">That's everything!</p>}
         </div>
 	);
 }

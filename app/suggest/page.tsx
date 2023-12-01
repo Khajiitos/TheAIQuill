@@ -1,7 +1,7 @@
 'use client'
 
 import Link from "next/link";
-import { FormEvent, FormEventHandler } from "react";
+import { FormEvent } from "react";
 
 const regex = /^[A-Za-z0-9 .:-]{3,64}$/;
 
