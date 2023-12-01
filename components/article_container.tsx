@@ -67,7 +67,7 @@ export default function ArticleContainer() {
             {articles.length === 0 && !hasMore ? <p>Empty!</p> : articles.map(articleInfo => (
                 <ArticleEntry key={articleInfo.slug} articleInfo={articleInfo}></ArticleEntry>
             ))}
-            {hasMore ? <p id="loading-paragraph" className="text-gray-300 text-center">Loading...</p> : <p className="text-gray-300 text-center">That's everything!</p>}
+            {hasMore ? <p id="loading-paragraph" className="text-gray-300 text-center">Loading...</p> : <p className="text-gray-300 text-center">That&apos;s everything!</p>}
         </div>
 	);
 }
