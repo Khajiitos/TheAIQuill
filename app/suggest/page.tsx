@@ -33,9 +33,9 @@ export default function SuggestPage() {
       })
       .then(res => res.json())
       .then(res => {
-        if (res.error as string) {
+        if (res.error) {
           errorParagraph.innerText = res.error;
-        } else if (res.message as string) {
+        } else if (res.message) {
           messageParagraph.innerText = res.message;
         }
       })
