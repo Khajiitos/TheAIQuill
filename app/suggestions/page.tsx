@@ -8,17 +8,27 @@ export default async function SuggestionsPage() {
     tag_count: number
   }
 
-  const response: TagAndCount[] = await query("SELECT tag, COUNT(tag) AS tag_count FROM suggestion WHERE tag IS NOT NULL GROUP BY tag", []) as Array<TagAndCount> || [];
+  interface PersonalityAndCount {
+    personality: string,
+    personality_count: number
+  }
+
+  const suggestionResponse: TagAndCount[] = await query("SELECT tag, COUNT(tag) AS tag_count FROM suggestion WHERE tag IS NOT NULL GROUP BY tag", []) as Array<TagAndCount> || [];
     
   let totalCount = 0;
-  response.forEach(obj => totalCount += obj.tag_count);
+  suggestionResponse.forEach(obj => totalCount += obj.tag_count);
+
+  const suggestionPersonalityResponse: PersonalityAndCount[] = await query("SELECT personality.personality, COUNT(personality.personality) AS personality_count FROM suggestion_personality JOIN personality ON personality.id = suggestion_personality.personality_id GROUP BY personality", []) as Array<PersonalityAndCount> || [];
+  
+  let totalPersonalityCount = 0;
+  suggestionPersonalityResponse.forEach(obj => totalPersonalityCount += obj.personality_count);
 
   return (
     <main className="bg-green-600 mt-3 text-white p-8">
         <h1 className="text-3xl font-bold mb-6">Suggestions</h1>
-        <p>This page contains a list of suggested tags.</p>
+        <p>This page contains a list of suggested tags or personalities.</p>
 
-        {response.length === 0 ? <p className='text-red-400 mt-5 font-semibold'>But there are no suggested tags!</p> : <table className='mt-5 border-collapse border bg-green-700'>
+        {suggestionResponse.length === 0 ? <p className='text-red-400 mt-5 font-semibold'>No suggested tags!</p> : <table className='mt-5 border-collapse border bg-green-700'>
           <thead>
           <tr>
             <th className='py-4 px-6 border'>Tag</th>
@@ -26,10 +36,27 @@ export default async function SuggestionsPage() {
           </tr>
           </thead>
           <tbody>
-          {response.map(obj => (
+          {suggestionResponse.map(obj => (
             <tr key={obj.tag} className='border-t'>
               <td className='py-4 px-6 border'>{obj.tag}</td>
               <td className='py-4 px-6 border'>{((obj.tag_count / totalCount) * 100).toFixed(1)}%</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>}
+
+        {suggestionPersonalityResponse.length === 0 ? <p className='text-red-400 mt-5 font-semibold'>No suggested personalities!</p> : <table className='mt-5 border-collapse border bg-green-700'>
+          <thead>
+          <tr>
+            <th className='py-4 px-6 border'>Personality</th>
+            <th className='py-4 px-6 border'>Chance</th>
+          </tr>
+          </thead>
+          <tbody>
+          {suggestionPersonalityResponse.map(obj => (
+            <tr key={obj.personality} className='border-t'>
+              <td className='py-4 px-6 border'>{obj.personality}</td>
+              <td className='py-4 px-6 border'>{((obj.personality_count / totalPersonalityCount) * 100).toFixed(1)}%</td>
             </tr>
           ))}
           </tbody>
