@@ -70,7 +70,7 @@ export default function ArticleContainer() {
                 <SearchBar onUpdate={(phrase) => {
                     setSearchPhrase(phrase);
                     setArticles(articles.sort((a, b) => b.creation_date.getTime() - a.creation_date.getTime()));
-                    //setArticles(articles.filter(articleInfo => articleInfo.article_header.includes(searchPhrase) || articleInfo.article_description.includes(searchPhrase)));
+                    setArticles(articles.filter(articleInfo => articleInfo.article_header.toLowerCase().includes(searchPhrase.toLowerCase()) || articleInfo.article_description.toLowerCase().includes(searchPhrase.toLowerCase())));
                     setHasMore(true);
                     checkIfDiscovered();
                 }}></SearchBar>
