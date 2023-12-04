@@ -30,7 +30,7 @@ export async function generateMetadata(props: {params: {slug: string}}) : Promis
 export default async function ArticlePage(props: {params: {slug: string}}) {
   const response: Array<ArticleInfo> = await query("SELECT * FROM article WHERE slug = ?", [props.params.slug]) as Array<ArticleInfo> || [];
 
-  const data: ArticleInfo | null = response.length === 1 ? response[0] : null;
+  const data: ArticleInfo | null = response.length >= 1 ? response[0] : null;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between pt-5">

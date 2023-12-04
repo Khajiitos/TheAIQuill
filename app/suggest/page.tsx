@@ -17,7 +17,7 @@ export default async function SuggestPage() {
         <p className="font-semibold mt-8">Your article suggestion</p>
         <SuggestionForm></SuggestionForm>
 
-        <p className="font-semibold mt-8">Your AI personality suggestion <b>(WIP)</b></p>
+        <p className="font-semibold mt-8">Your AI personality suggestion</p>
         <SuggestionPersonalityForm options={personalities.map(personalityObj => personalityObj.personality)}></SuggestionPersonalityForm>
     </main>
   );

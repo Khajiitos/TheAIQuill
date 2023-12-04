@@ -2,17 +2,19 @@
 import { ArticleInfo, PartialArticles } from "@/types/articles";
 import { useEffect, useState } from "react";
 import ArticleEntry from "./article_entry";
-
-async function seeMore(minId: number): Promise<PartialArticles> {
-    const articles = await (await fetch('/api/articles?minId=' + minId)).json() as PartialArticles;
-    articles.articles.map(e => e.creation_date = new Date(e.creation_date));
-    return articles;
-}
+import SearchBar from "./search_bar";
 
 export default function ArticleContainer() {  
     const [articles, setArticles] = useState<ArticleInfo[]>([]);
     const [hasMore, setHasMore] = useState<boolean>(true);
     const [waitingForResponse, setWaitingForResponse] = useState<boolean>(false);
+    const [searchPhrase, setSearchPhrase] = useState<string>("");
+
+    async function seeMore(minId: number): Promise<PartialArticles> {
+        const articles = await (await fetch('/api/articles?minId=' + minId + (searchPhrase ? '&searchPhrase=' + searchPhrase : ''))).json() as PartialArticles;
+        articles.articles.map(e => e.creation_date = new Date(e.creation_date));
+        return articles;
+    }
 
     async function onBottomDiscovered() {
         if (waitingForResponse) {
@@ -28,7 +30,7 @@ export default function ArticleContainer() {
 
         setWaitingForResponse(true);
         const partialArticles: PartialArticles = await seeMore(minId);
-        setArticles([...articles, ...partialArticles.articles]);
+        setArticles([...articles, ...partialArticles.articles].sort((a, b) => b.creation_date.getTime() - a.creation_date.getTime()));
         setHasMore(partialArticles.hasMore);
         setWaitingForResponse(false);
     }
@@ -64,8 +66,17 @@ export default function ArticleContainer() {
 
 	return (
         <div className="bg-green-700 text-white container p-4 rounded">
+            <div className="flex justify-center mb-3">
+                <SearchBar onUpdate={(phrase) => {
+                    setSearchPhrase(phrase);
+                    setArticles(articles.sort((a, b) => b.creation_date.getTime() - a.creation_date.getTime()));
+                    //setArticles(articles.filter(articleInfo => articleInfo.article_header.includes(searchPhrase) || articleInfo.article_description.includes(searchPhrase)));
+                    setHasMore(true);
+                    checkIfDiscovered();
+                }}></SearchBar>
+            </div>
             {articles.length === 0 && !hasMore ? <p>Empty!</p> : articles.map(articleInfo => (
-                <ArticleEntry key={articleInfo.slug} articleInfo={articleInfo}></ArticleEntry>
+                ((articleInfo.article_header.toLowerCase().includes(searchPhrase.toLowerCase()) || articleInfo.article_description.toLowerCase().includes(searchPhrase.toLowerCase())) && <ArticleEntry key={articleInfo.slug} articleInfo={articleInfo}></ArticleEntry>)
             ))}
             {hasMore ? <p id="loading-paragraph" className="text-gray-300 text-center">Loading...</p> : <p className="text-gray-300 text-center">That&apos;s everything!</p>}
         </div>

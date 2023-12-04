@@ -12,7 +12,13 @@ export async function GET(req: NextRequest) {
         });
     }
 
+    const searchPhrase = req.nextUrl.searchParams.get('search');
+
     const response: ArticleInfo[] = await (minId == -1 ? query("SELECT * FROM article ORDER BY creation_date DESC LIMIT 11;", []) : query("SELECT * FROM article WHERE article_id < ? ORDER BY creation_date DESC LIMIT 11;", [minId])) as ArticleInfo[] || [];
+
+    if (searchPhrase) {
+        response.filter(articleInfo => articleInfo.article_header.toLowerCase().includes(searchPhrase.toLowerCase()) || articleInfo.article_description.toLowerCase().includes(searchPhrase.toLowerCase()));
+    }
 
     const articles = [];
 
