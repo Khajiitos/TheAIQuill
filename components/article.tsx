@@ -1,7 +1,7 @@
-import { ScriptProps } from "next/script";
-import Image from 'next/image'
 import { ArticleInfo } from "@/types/articles";
 import { parse } from 'marked'
+import Image from "next/image";
+import LikeButton from "./like_button";
 
 export interface ArticleProp {
     articleData: ArticleInfo | null;
@@ -16,6 +16,10 @@ export default async function Article(props : ArticleProp) {
                 {props.articleData && <aside><p className="text-gray-300 text-sm mb-7">{props.articleData.creation_date.toDateString()}</p></aside>}
                 </header>
                 <section dangerouslySetInnerHTML={{__html: innerHTML}}></section>
+
+                <aside className="flex justify-center mt-10">
+                    <LikeButton liked={true}></LikeButton>
+                </aside>
             </article>
 	);
 }

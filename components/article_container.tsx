@@ -70,16 +70,6 @@ export default function ArticleContainer() {
                 <SearchBar onUpdate={(phrase) => {
                     setSearchPhrase(phrase);
                     setArticles(articles.sort((a, b) => b.creation_date.getTime() - a.creation_date.getTime()));
-                    /*
-                    setArticles(articles.filter(articleInfo => {
-                        //console.log(articleInfo.article_header);
-                        //console.log(articleInfo.article_description);
-                        
-                        const ret = articleInfo.article_header.toLowerCase().includes(searchPhrase.toLowerCase()) || articleInfo.article_description.toLowerCase().includes(searchPhrase.toLowerCase())
-                        //console.log(ret ? 'matches' : 'doesnt match');
-                        //console.log(' ' + phrase);
-                        //return ret;
-                    }));*/
                     setHasMore(true);
                     checkIfDiscovered();
                 }}></SearchBar>
