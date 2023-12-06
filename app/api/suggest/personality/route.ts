@@ -27,8 +27,9 @@ export async function POST(req: NextRequest) {
 
         const response: Array<{personality: string}> = await query("SELECT personality FROM personality WHERE id = ?", [realPersonalityId]) as Array<{personality: string}> || [];
 
-        console.log(response);
         if (response.length >= 1) {
+            console.log('[' + new Date().toISOString() + '] ' + ipAddress + ' suggested personality: ' + response[0].personality);
+
             await query("INSERT INTO suggestion_personality (ip_address, personality_id) VALUES (?, ?)", [ipAddress, realPersonalityId]);
             return Response.json({
                 message: "Success! You suggested personality: " + response[0].personality

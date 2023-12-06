@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArticleInfo } from "@/types/articles";
+import { ArticleInfo, ArticleInfoWithLike } from "@/types/articles";
 import Image from "next/image";
 
-export default function ArticleEntry(props: {articleInfo: ArticleInfo}) {
+export default function ArticleEntry(props: {articleInfo: ArticleInfoWithLike}) {
     const wordCount: number = props.articleInfo.article_content.split(" ").length;
     const minutesOfReading: number = Math.ceil(wordCount / 230);
       
@@ -16,7 +16,7 @@ export default function ArticleEntry(props: {articleInfo: ArticleInfo}) {
         hour12: false,
     });
       
-    const likeCount = Math.random() > 0.5 ? 1 : 0;
+    const likeCount = props.articleInfo.like_count;
 
 	return (
         <Link href={'article/' + props.articleInfo.slug}>

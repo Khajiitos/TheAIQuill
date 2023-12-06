@@ -5,6 +5,11 @@ export interface ArticleInfo {
     article_description: string;
     article_content: string;
     creation_date: Date;
+    like_count: number;
+}
+
+export interface ArticleInfoWithLike extends ArticleInfo {
+    liked: boolean;
 }
 
 export interface ArticleProp {
