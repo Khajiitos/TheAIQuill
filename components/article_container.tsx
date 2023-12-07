@@ -1,11 +1,11 @@
 'use client'
-import { ArticleInfo, PartialArticles } from "@/types/articles";
+import { ArticleInfo, ArticleInfoWithLike, PartialArticles } from "@/types/articles";
 import { useEffect, useState } from "react";
 import ArticleEntry from "./article_entry";
 import SearchBar from "./search_bar";
 
 export default function ArticleContainer() {  
-    const [articles, setArticles] = useState<ArticleInfo[]>([]);
+    const [articles, setArticles] = useState<ArticleInfoWithLike[]>([]);
     const [hasMore, setHasMore] = useState<boolean>(true);
     const [waitingForResponse, setWaitingForResponse] = useState<boolean>(false);
     const [searchPhrase, setSearchPhrase] = useState<string>("");

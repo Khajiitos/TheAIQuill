@@ -27,7 +27,7 @@ export default function ArticleEntry(props: {articleInfo: ArticleInfoWithLike}) 
                 <p className="text-gray-300 text-sm">{props.articleInfo.article_description}</p>
                 <p className="mt-2 text-gray-300 text-sm">
                     <Image src="/img/clock_gray.svg" width={16} height={16} className="inline mr-2" alt="Reading time"></Image>
-                    {minutesOfReading} min read | {likeCount !== 0 && <><Image className="inline" src="/img/like.svg" alt="Like" width={16} height={16}></Image> {likeCount} likes | </>} <span title={timeZone}>{formattedDate}</span>
+                    {minutesOfReading} min read | {likeCount !== 0 && <><Image className="inline" src="/img/like.svg" alt="Like" width={16} height={16}></Image> {likeCount + (likeCount === 1 ? ' like' : ' likes')} | </>} <span title={timeZone}>{formattedDate}</span>
                 </p>
             </div>
         </Link>

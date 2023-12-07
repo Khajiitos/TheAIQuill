@@ -17,6 +17,6 @@ export interface ArticleProp {
 }
 
 export interface PartialArticles {
-    articles: ArticleInfo[],
+    articles: ArticleInfoWithLike[],
     hasMore: boolean
 }
