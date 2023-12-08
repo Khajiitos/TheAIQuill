@@ -9,7 +9,7 @@ export default async function Home() {
     <main className="">
       <h3 className='text-center font-semibold text-4xl m-5 text-white'>Latest articles</h3>
 
-      <div className='flex justify-center content-center flex-row'>
+      <div className='flex justify-center content-center flex-row container-none overflow-hidden'>
         <ArticleContainer></ArticleContainer>
       </div>
     </main>

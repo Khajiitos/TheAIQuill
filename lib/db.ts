@@ -1,6 +1,7 @@
 import { Pool, QueryOptions } from "mysql";
 
 import { createPool } from "mysql";
+import { deprecate } from "util";
 
 const config = {
   host: process.env.MYSQL_HOST,
