@@ -3,6 +3,7 @@ import { ArticleInfo, ArticleInfoWithLike } from '@/types/articles';
 import { Metadata } from 'next';
 import { query } from '@/lib/db';
 import { headers } from "next/headers";
+import CommentSection from '@/components/comment_section';
 
 export const dynamic = 'force-dynamic';
 
@@ -42,6 +43,7 @@ export default async function ArticlePage(props: {params: {slug: string}}) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between pt-5">
         <Article articleInfo={articleInfo}></Article>
+        {articleInfo && <CommentSection articleId={articleInfo.article_id}></CommentSection>}
     </main>
   )
 }

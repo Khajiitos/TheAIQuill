@@ -1,8 +1,17 @@
-import { NextRequest } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { query } from '@/lib/db';
-
-const regex = /^[A-Za-z0-9 .:-]{3,64}$/;
+import { getSessionData } from '@/lib/session';
 
 export async function POST(req: NextRequest) {
-    
+    const formData = await req.formData();
+    const password = formData.get('password');
+    const adminPassword = process.env.ADMIN_PASSWORD || 'admin';
+    if (password === adminPassword) {
+        const sessionData = await getSessionData(req.cookies);
+        sessionData.loggedIn = true;
+        sessionData.save();
+        return Response.redirect(new URL('/admin', req.url));
+    } else {
+        return Response.redirect(new URL('/admin', req.url));
+    }
 }

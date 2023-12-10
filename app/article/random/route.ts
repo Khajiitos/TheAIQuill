@@ -1,5 +1,6 @@
 import { ArticleInfo } from '@/types/articles';
 import { query } from '@/lib/db';
+import { NextResponse } from 'next/server';
 
 export const dynamic = 'force-dynamic' // defaults to force-static
 
@@ -15,6 +16,5 @@ export async function GET(req: Request) {
       destination = '/article/' + response[id].slug; 
     }
 
-    console.log(req.url);
-    return Response.redirect(req.headers.get('host') + destination);
+    return NextResponse.redirect(new URL(destination, req.url));
 }

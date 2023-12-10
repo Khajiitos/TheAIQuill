@@ -1,5 +1,12 @@
-import { getIronSession } from 'iron-session';
+import { IronSession, getIronSession } from 'iron-session';
 
-export async function getSessionData(cookies: any) {
-    return await getIronSession(cookies, { password: process.env.ADMIN_PASSWORD || 'admin', cookieName: "admin-session-cookie" });
+export interface SessionData {
+    loggedIn: boolean;
+}
+
+export async function getSessionData(cookies: any): Promise<IronSession<SessionData>> {
+    return await getIronSession(cookies, {
+        password: 'nuIjJaNi7QZRVCXepSPlMmHD2rcfLxwkF5A64Td8EoW13hgsOK',
+        cookieName: "admin-session-cookie" 
+    });
 }
