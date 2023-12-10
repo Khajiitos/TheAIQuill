@@ -2,6 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --color-text: #eff0eb;
+    --color-background: #0b0c05;
+    --color-primary: #c1c4b1;
+    --color-secondary: #397732;
+    --color-accent: #54b856;
+    --color-entry: #1d1e19;
+    --color-entry-hover: #494a41;
+}
+
+@font-face {
+    font-family: 'Baloo';
+    src: url('/font/Baloo2-VariableFont_wght.ttf');
+}
+
+* {
+    font-family: 'Baloo', sans-serif;
+}
+
 article p {
     margin: 12px 0 12px 0;
 }

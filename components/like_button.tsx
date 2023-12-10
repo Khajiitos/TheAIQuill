@@ -28,9 +28,13 @@ export default function LikeButton(props: {articleLiked: boolean, articleId: num
     }
 
     return (
-        <div title={liked ? "Click to remove like" : "Click to add like"} className="cursor-pointer flex bg-green-700 hover:bg-green-600 rounded-lg p-2" onClick={onClick}>
-            <Image src={liked ? "/img/like_full_liked.svg" : "/img/like_full.svg"} alt="Like" width={48} height={48}></Image>
-            <p className="pl-3 pr-1 select-none font-sans font-bold">{likeCount}</p>
+        <div className="flex bg-entry rounded-lg p-2 w-full justify-between">
+            <p className="pl-3 pr-1 select-none">Did you like this article?<br/>Rate it by leaving a like!</p>
+
+            <div className="pr-3">
+                <Image className="cursor-pointer mt-2" src={liked ? "/img/icon-star-fill.svg" : "/img/icon-star.svg"} alt="Like button" width={32} height={32} onClick={onClick}></Image>
+                <p className="text-center m-1">{likeCount}</p>
+            </div>
         </div>
     )
 }

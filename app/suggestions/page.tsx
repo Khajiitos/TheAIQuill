@@ -24,7 +24,7 @@ export default async function SuggestionsPage() {
   suggestionPersonalityResponse.forEach(obj => totalPersonalityCount += obj.personality_count);
 
   return (
-    <main className="bg-green-600 mt-3 text-white p-8">
+    <main className="mt-3 text-text p-8">
         <h1 className="text-3xl font-bold mb-6">Suggestions</h1>
         <p>This page contains a list of suggested tags or personalities.</p>
 

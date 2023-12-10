@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export default async function Home() {  
   return (
     <main className="">
-      <h3 className='text-center font-semibold text-4xl m-5 text-white'>Latest articles</h3>
+      <h3 className='text-center font-semibold text-4xl m-5 text-text'>Latest articles</h3>
 
       <div className='flex justify-center content-center flex-row container-none overflow-hidden'>
         <ArticleContainer></ArticleContainer>

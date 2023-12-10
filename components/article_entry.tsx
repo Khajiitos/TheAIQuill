@@ -22,13 +22,14 @@ export default function ArticleEntry(props: {articleInfo: ArticleInfoWithLike}) 
 
 	return (
         <Link href={'article/' + props.articleInfo.slug}>
-            <div className="bg-green-600 hover:bg-green-500 text-white container-lg rounded m-4 p-3 transition-colors">
-                <p className="text-lg font-semibold">{props.articleInfo.article_header}</p>
+            <div className="bg-entry hover:bg-entry-hover text-text container-lg rounded-t-xl m-4 p-4 transition-colors border-b-2 border-accent">
+                <p className="text-2xl font-semibold mb-2">{props.articleInfo.article_header}</p>
                 <p className="text-gray-300 text-sm">{props.articleInfo.article_description}</p>
-                <p className="mt-2 text-gray-300 text-sm">
-                    <Image src="/img/clock_gray.svg" width={16} height={16} className="inline mr-2" alt="Reading time"></Image>
-                    {minutesOfReading} min read | {likeCount !== 0 && <><Image className="inline" src="/img/like.svg" alt="Like" width={16} height={16}></Image> {likeCount + (likeCount === 1 ? ' like' : ' likes')} | </>} <span title={timeZone}>{formattedDate}</span>
-                </p>
+                <div className="flex mt-2 justify-between">
+                    <p className="text-accent">{minutesOfReading} min read</p>
+                    <p className="text-accent">{likeCount + (likeCount === 1 ? ' like' : ' likes')}</p>
+                    <p className="text-accent" title={timeZone}>{formattedDate}</p>
+                </div>
             </div>
         </Link>
 	);

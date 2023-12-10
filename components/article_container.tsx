@@ -65,7 +65,7 @@ export default function ArticleContainer() {
     });
 
 	return (
-        <div className="bg-green-700 text-white container p-4 rounded">
+        <div className="text-text container p-4">
             <div className="flex justify-center mb-3">
                 <SearchBar onUpdate={(phrase) => {
                     setSearchPhrase(phrase);

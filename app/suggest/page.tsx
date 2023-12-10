@@ -7,7 +7,7 @@ export default async function SuggestPage() {
   const personalities: Array<{personality: string}> = await query("SELECT personality FROM personality", []) as Array<{personality: string}>;
 
   return (
-    <main className="bg-green-600 mt-3 text-white p-8">
+    <main className="mt-3 text-text p-8">
         <h1 className="text-3xl font-bold mb-6">Suggest an article</h1>
         <p>Here you will be able to suggest an article idea or AI&apos;s &quot;personality&quot; for the next article that gets generated.</p>
         <p><b>You can only suggest one idea.</b> After an article gets generated, you can do that again.</p>
