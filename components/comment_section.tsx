@@ -49,7 +49,7 @@ export default function CommentSection(props: {articleId: number}) {
         if (json.comment) {
             const comment: CommentInfo = json.comment;
             comment.comment_date = new Date(comment.comment_date);
-            
+
             if (comments) {
                 setComments([comment, ...comments as CommentInfo[]]);
             }
@@ -78,7 +78,7 @@ export default function CommentSection(props: {articleId: number}) {
             </>}
 
             {comments?.map(comment => (
-                <CommentEntry commentInfo={comment}></CommentEntry>
+                <CommentEntry key={comment.id} commentInfo={comment}></CommentEntry>
             ))}
         </aside>
 	);
