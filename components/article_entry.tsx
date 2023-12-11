@@ -26,8 +26,20 @@ export default function ArticleEntry(props: {articleInfo: ArticleInfoWithLike}) 
                 <p className="text-2xl font-semibold mb-2">{props.articleInfo.article_header}</p>
                 <p className="text-gray-300 text-sm">{props.articleInfo.article_description}</p>
                 <div className="flex mt-2 justify-between">
-                    <p className="text-accent">{minutesOfReading} min read</p>
-                    <p className="text-accent">{likeCount + (likeCount === 1 ? ' like' : ' likes')}</p>
+                    <div className="flex">
+                        <p className="text-accent mr-3">
+                            {likeCount}
+                            <Image className="inline ml-1" src="/img/icon-star-fill.svg" alt="Star icon" width={16} height={16}></Image>
+                        </p>
+                        <p className="text-accent mr-3">
+                            0
+                            <Image className="inline ml-1" src="/img/icon-comment.svg" alt="Comment icon" width={16} height={16}></Image>
+                        </p>
+                        <p className="text-accent mr-3">
+                            {minutesOfReading} min
+                            <Image className="inline ml-1" src="/img/icon-time.svg" alt="Time icon" width={16} height={16}></Image>
+                        </p>
+                    </div>
                     <p className="text-accent" title={timeZone}>{formattedDate}</p>
                 </div>
             </div>

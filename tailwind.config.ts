@@ -14,8 +14,10 @@ const config: Config = {
         accent: 'var(--color-accent)',
         text: 'var(--color-text)',
         background: 'var(--color-background)',
+        'background-lighter': 'var(--color-background-lighter)',
         entry: 'var(--color-entry)',
         'entry-hover': 'var(--color-entry-hover)',
+        input: 'var(--color-input)'
       }
     },
   },

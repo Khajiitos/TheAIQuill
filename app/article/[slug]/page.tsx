@@ -43,7 +43,6 @@ export default async function ArticlePage(props: {params: {slug: string}}) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between pt-5">
         <Article articleInfo={articleInfo}></Article>
-        {articleInfo && <CommentSection articleId={articleInfo.article_id}></CommentSection>}
     </main>
   )
 }

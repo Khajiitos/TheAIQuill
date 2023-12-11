@@ -5,11 +5,13 @@
 :root {
     --color-text: #eff0eb;
     --color-background: #0b0c05;
+    --color-background-lighter: #0d1107;
     --color-primary: #c1c4b1;
     --color-secondary: #397732;
     --color-accent: #54b856;
     --color-entry: #1d1e19;
     --color-entry-hover: #494a41;
+    --color-input: #24351d;
 }
 
 @font-face {

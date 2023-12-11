@@ -7,7 +7,6 @@ import CommentEntry from "./comment_entry";
 
 export default function CommentSection(props: {articleId: number}) {
     const [comments, setComments] = useState<CommentInfo[] | null>(null);
-    const [addCommentOpened, setAddCommentOpened] = useState<boolean>(false);
     const [addCommentMessage, setAddCommentMessage] = useState<string | null>(null);
     const [addCommentMessageError, setAddCommentMessageError] = useState<boolean>(false);
 
@@ -57,29 +56,46 @@ export default function CommentSection(props: {articleId: number}) {
     }
 
 	return (
-        <aside className="mt-12 font-serif bg-green-800 container-none max-w-7xl m-0 p-10 text-white rounded-sm border-4 border-green-900">
-            <h3>Comments</h3>
-            {comments !== null && <>{comments.length === 0 && <p>No comments! Be the first one to comment.</p>}</>}
-            <button className="bg-green-700 p-4 rounded-lg mt-5 hover:bg-green-600 transition-colors" onClick={() => setAddCommentOpened(!addCommentOpened)}>{addCommentOpened ? 'Hide add comment' : 'Add comment'}</button>
+        <>
+        <aside className="mt-12 bg-entry rounded-lg p-5 w-full p-10 text-text">
+            <p>Do you have anything to say about this article?</p>
+            <p>Leave a comment!</p>
 
-            {addCommentOpened && <>
-            <form className="bg-green-700 p-4 mt-5 rounded" onSubmit={onAddComment}>
-                <label htmlFor="author">Author</label>
-                <br/>
-                <input type="text" name="author" placeholder="Anonymous" className="mt-2 p-2 rounded text-black"/>
-                <br/><br/>
-                <label htmlFor="content">Content</label>
-                <br />
-                <textarea name="content" className="mt-2 p-2 rounded text-black"/>
-                <br />
-                <button className="bg-green-600 p-4 rounded-lg mt-5 hover:bg-green-500 transition-colors">Add comment</button>
+            {<>
+            <form className="mt-5 rounded" onSubmit={onAddComment}>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label className="mr-3 text-text" htmlFor="author">Author:</label>
+                            </td>
+                            <td>
+                                <input type="text" name="author" placeholder="Anonymous" className="text-sm mt-2 p-2 pl-4 rounded-full bg-input text-text shadow-xl"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label className="mr-3 text-text" htmlFor="content">Content:</label>
+                            </td>
+                            <td>
+                                <input name="content" placeholder="Comment..." className="text-sm mt-2 p-2 pl-4 rounded-full text-text bg-input shadow-xl"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button className="bg-secondary p-2 rounded-lg mt-5 hover:bg-accent w-full transition-colors shadow-xl">Comment</button>
                 {addCommentMessage && (addCommentMessageError ? <p className="mt-3 text-red-500">{addCommentMessage}</p> : <p className="mt-3">{addCommentMessage}</p>)}
             </form>
             </>}
 
+        </aside>
+        <aside>
+            <p className="text-text text-center mt-8 text-3xl">Comments</p>
+            {comments !== null && <>{comments.length === 0 && <p className="text-center">No comments!<br/> Be the first one to comment.</p>}</>}
             {comments?.map(comment => (
                 <CommentEntry key={comment.id} commentInfo={comment}></CommentEntry>
             ))}
         </aside>
+        </>
 	);
 }

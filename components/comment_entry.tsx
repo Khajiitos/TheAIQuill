@@ -16,12 +16,12 @@ export default function CommentEntry(props: {commentInfo: CommentInfo}) {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     
 	return (
-        <div className="bg-green-600 text-white container-lg rounded mt-5 p-3 transition-colors">
-            <div className="flex">
-            <p className="text-lg font-semibold">{props.commentInfo.author}</p>
-            <p className="text-sm ml-8 mt-1 text-gray-300" title={timeZone}>{formattedDate}</p>
+        <div className="bg-background-lighter text-text rounded-lg shadow-xl mt-5 p-3 transition-colors">
+            <p className="text-lg font-semibold m-0">{props.commentInfo.author}</p>
+            <p className="text-text text-sm mt-2">{props.commentInfo.content}</p>
+            <div className="flex justify-between m-0">
+                <p className="text-sm m-0 text-accent" title={timeZone}>{formattedDate}</p>
             </div>
-            <p className="text-gray-200 text-sm mt-3">{props.commentInfo.content}</p>
         </div>
 	);
 }

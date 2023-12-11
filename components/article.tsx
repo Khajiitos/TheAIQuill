@@ -2,6 +2,7 @@ import { ArticleInfo, ArticleInfoWithLike } from "@/types/articles";
 import { parse } from 'marked'
 import Image from "next/image";
 import LikeButton from "./like_button";
+import CommentSection from "./comment_section";
 
 export default async function Article(props: {articleInfo: ArticleInfoWithLike | null}) {
 
@@ -42,6 +43,7 @@ export default async function Article(props: {articleInfo: ArticleInfoWithLike |
                 {props.articleInfo && <aside className="flex justify-center mt-10">
                     <LikeButton articleId={props.articleInfo.article_id} articleLiked={props.articleInfo.liked} likeCount={props.articleInfo.like_count}></LikeButton>
                 </aside>}
+                {props.articleInfo && <CommentSection articleId={props.articleInfo.article_id}></CommentSection>}
             </article>
 	);
 }
