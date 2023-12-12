@@ -3,7 +3,12 @@ export interface CommentInfo {
     comment_date: Date,
     author: string,
     content: string,
-    replies: CommentInfo[]
+    replies: CommentInfo[],
+    like_count: number
+}
+
+export interface CommentInfoWithLike extends CommentInfo {
+    comment_liked: boolean
 }
 
 export interface CommentInfoRow {
@@ -13,5 +18,7 @@ export interface CommentInfoRow {
     content: string,
     reply_to: number,
     ip_address: string,
-    comment_date: Date
+    comment_date: Date,
+    like_count: number,
+    comment_liked: boolean
 }

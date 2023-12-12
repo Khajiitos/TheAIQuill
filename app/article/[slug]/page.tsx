@@ -36,7 +36,7 @@ export default async function ArticlePage(props: {params: {slug: string}}) {
     ipAddress = ipAddress.substring(7);
   }
 
-  const response: ArticleInfoWithLike[] = await query("SELECT article.*, COUNT(`like`.article_id) AS like_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id WHERE slug = ? GROUP BY article.article_id;", [ipAddress, props.params.slug]) as ArticleInfoWithLike[] || [];
+  const response: ArticleInfoWithLike[] = await query("SELECT article.*, COUNT(`like`.article_id) AS like_count, COUNT(`comment`.article_id) AS comment_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id LEFT JOIN `comment` ON `comment`.article_id = article.article_id WHERE slug = ? GROUP BY article.article_id;", [ipAddress, props.params.slug]) as ArticleInfoWithLike[] || [];
 
   const articleInfo: ArticleInfoWithLike | null = response.length >= 1 ? response[0] : null;
 

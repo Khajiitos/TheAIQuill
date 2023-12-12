@@ -1,19 +1,19 @@
 'use client'
 
 import { ArticleInfo, ArticleInfoWithLike } from "@/types/articles";
-import { CommentInfo } from "@/types/comments";
+import { CommentInfo, CommentInfoWithLike } from "@/types/comments";
 import { FormEvent, useEffect, useState } from "react";
 import CommentEntry from "./comment_entry";
 
 export default function CommentSection(props: {articleId: number}) {
-    const [comments, setComments] = useState<CommentInfo[] | null>(null);
+    const [comments, setComments] = useState<CommentInfoWithLike[] | null>(null);
     const [addCommentMessage, setAddCommentMessage] = useState<string | null>(null);
     const [addCommentMessageError, setAddCommentMessageError] = useState<boolean>(false);
 
     useEffect(() => {
         if (comments === null) {
             fetch('/api/comments?articleId=' + props.articleId).then(res => res.json()).then(json => {
-                const comments = json as CommentInfo[];
+                const comments = json as CommentInfoWithLike[];
                 comments.map(comment => comment.comment_date = new Date(comment.comment_date));
                 setComments(comments);
             });
@@ -37,7 +37,7 @@ export default function CommentSection(props: {articleId: number}) {
         interface AddCommentResponse {
             result: 'ok' | 'fail',
             message: string;
-            comment?: CommentInfo
+            comment?: CommentInfoWithLike
         }
 
         const json: AddCommentResponse = await fetchResp.json();
@@ -46,11 +46,11 @@ export default function CommentSection(props: {articleId: number}) {
         setAddCommentMessage(json.message);
 
         if (json.comment) {
-            const comment: CommentInfo = json.comment;
+            const comment: CommentInfoWithLike = json.comment;
             comment.comment_date = new Date(comment.comment_date);
 
             if (comments) {
-                setComments([comment, ...comments as CommentInfo[]]);
+                setComments([comment, ...comments as CommentInfoWithLike[]]);
             }
         }
     }
@@ -93,7 +93,7 @@ export default function CommentSection(props: {articleId: number}) {
             <p className="text-text text-center mt-8 text-3xl">Comments</p>
             {comments !== null && <>{comments.length === 0 && <p className="text-center">No comments!<br/> Be the first one to comment.</p>}</>}
             {comments?.map(comment => (
-                <CommentEntry key={comment.id} commentInfo={comment}></CommentEntry>
+                <CommentEntry key={comment.id} commentInfo={comment} articleId={props.articleId}></CommentEntry>
             ))}
         </aside>
         </>

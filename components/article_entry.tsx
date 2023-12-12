@@ -19,6 +19,7 @@ export default function ArticleEntry(props: {articleInfo: ArticleInfoWithLike}) 
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       
     const likeCount = props.articleInfo.like_count;
+    const commentCount = props.articleInfo.comment_count;
 
 	return (
         <Link href={'article/' + props.articleInfo.slug}>
@@ -32,7 +33,7 @@ export default function ArticleEntry(props: {articleInfo: ArticleInfoWithLike}) 
                             <Image className="inline ml-1" src="/img/icon-star-fill.svg" alt="Star icon" width={16} height={16}></Image>
                         </p>
                         <p className="text-accent mr-3">
-                            0
+                            {commentCount}
                             <Image className="inline ml-1" src="/img/icon-comment.svg" alt="Comment icon" width={16} height={16}></Image>
                         </p>
                         <p className="text-accent mr-3">

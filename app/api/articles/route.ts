@@ -26,8 +26,8 @@ export async function GET(req: NextRequest) {
     ) as ArticleInfo[] || []; */
 
     const response: ArticleInfoWithLike[] = await (minId == -1 ?
-        query("SELECT article.*, COUNT(`like`.article_id) AS like_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id GROUP BY article.article_id ORDER BY article.creation_date DESC LIMIT 11;", [ipAddress]) :
-        query("SELECT article.*, COUNT(`like`.article_id) AS like_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id WHERE article.article_id < ? GROUP BY article.article_id ORDER BY article.creation_date DESC LIMIT 11;", [ipAddress, minId])
+        query("SELECT article.*, COUNT(`like`.article_id) AS like_count, COUNT(`comment`.article_id) AS comment_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id LEFT JOIN `comment` ON `comment`.article_id = article.article_id GROUP BY article.article_id ORDER BY article.creation_date DESC LIMIT 11;", [ipAddress]) :
+        query("SELECT article.*, COUNT(`like`.article_id) AS like_count, COUNT(`comment`.article_id) AS comment_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id LEFT JOIN `comment` ON `comment`.article_id = article.article_id WHERE article.article_id < ? GROUP BY article.article_id ORDER BY article.creation_date DESC LIMIT 11;", [ipAddress, minId])
     ) as ArticleInfoWithLike[] || [];
     
     if (searchPhrase) {

@@ -6,6 +6,7 @@ export interface ArticleInfo {
     article_content: string;
     creation_date: Date;
     like_count: number;
+    comment_count: number;
 }
 
 export interface ArticleInfoWithLike extends ArticleInfo {

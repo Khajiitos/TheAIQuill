@@ -22,6 +22,7 @@ export default async function Article(props: {articleInfo: ArticleInfoWithLike |
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
       
     const likeCount = props.articleInfo ? props.articleInfo.like_count : 0;
+    const commentCount = props.articleInfo ? props.articleInfo.comment_count : 0;
 
     const innerHTML = props.articleInfo != null ? parse(props.articleInfo.article_content) : "";
 	return (
@@ -30,10 +31,22 @@ export default async function Article(props: {articleInfo: ArticleInfoWithLike |
                 {<h1 className="font-semibold text-center text-4xl mb-12">{props.articleInfo?.article_header || <span className="text-red-500">Article doesn&apos;t exist</span>}</h1>}
                 {props.articleInfo && 
                 <aside>
-                    <div className="bg-entry p-2 pl-4 pr-4 mt-6 mb-4 flex justify-between rounded-xl">
+                    <div className="bg-entry p-2 pl-4 pr-4 mt-6 mb-4 flex items-center justify-between rounded-xl">
                     <p className="text-accent m-0" title={timeZone}>{formattedDate}</p>
-                    <p className="text-accent m-0">{likeCount + (likeCount === 1 ? ' like' : ' likes')}</p>
-                    <p className="text-accent m-0">{minutesOfReading} min read</p>
+                    <div className="flex">
+                    <p className="text-accent mr-3">
+                            {likeCount}
+                            <Image className="inline ml-1" src="/img/icon-star-fill.svg" alt="Star icon" width={16} height={16}></Image>
+                        </p>
+                        <p className="text-accent mr-3">
+                            {commentCount}
+                            <Image className="inline ml-1" src="/img/icon-comment.svg" alt="Comment icon" width={16} height={16}></Image>
+                        </p>
+                        <p className="text-accent mr-3">
+                            {minutesOfReading} min
+                            <Image className="inline ml-1" src="/img/icon-time.svg" alt="Time icon" width={16} height={16}></Image>
+                        </p>
+                    </div>
                     </div>
                 </aside>
                 }
