@@ -12,7 +12,7 @@ export default function Navigation() {
 				<div className="space-between">
 					<Link href="/">
 						<div className="p-3">
-							<Image src="/img/logo.svg" alt="The AI Quill logo" width={50} height={50}></Image>
+							<Image src="/img/logo-64x64.png" alt="The AI Quill logo" width={50} height={50}></Image>
 						</div>
 					</Link>
 				</div>

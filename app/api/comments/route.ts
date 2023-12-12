@@ -6,7 +6,7 @@ import { CommentInfo, CommentInfoRow } from '@/types/comments';
 export async function GET(req: NextRequest) {
     const articleId = Number(req.nextUrl.searchParams.get('articleId')) || -1;
 
-    const response: CommentInfoRow[] = await query("SELECT * FROM comment WHERE article_id = ? AND reply_to IS NULL", [articleId]) as CommentInfoRow[] || [];
+    const response: CommentInfoRow[] = await query("SELECT * FROM comment WHERE article_id = ? AND reply_to IS NULL ORDER BY comment_date DESC", [articleId]) as CommentInfoRow[] || [];
 
     const comments: CommentInfo[] = [];
 
