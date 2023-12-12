@@ -21,9 +21,9 @@ export async function GET(req: NextRequest) {
     const searchPhrase = req.nextUrl.searchParams.get('search');
 
     const response: ArticleInfoWithLike[] = await (minId == -1 ?
-        query("SELECT article.*, COUNT(`like`.id) AS like_count, COUNT(`comment`.id) AS comment_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id LEFT JOIN `comment` ON `comment`.article_id = article.article_id GROUP BY article.article_id ORDER BY article.creation_date DESC LIMIT 11;", [ipAddress]) :
-        query("SELECT article.*, COUNT(`like`.id) AS like_count, COUNT(`comment`.id) AS comment_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id LEFT JOIN `comment` ON `comment`.article_id = article.article_id WHERE article.article_id < ? GROUP BY article.article_id ORDER BY article.creation_date DESC LIMIT 11;", [ipAddress, minId])
-    ) as ArticleInfoWithLike[] || [];
+        query("SELECT article.*, COUNT(DISTINCT `like`.id) AS like_count, COUNT(DISTINCT `comment`.id) AS comment_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id LEFT JOIN `comment` ON `comment`.article_id = article.article_id GROUP BY article.article_id ORDER BY article.creation_date DESC LIMIT 11;", [ipAddress]) :
+        query("SELECT article.*, COUNT(DISTINCT `like`.id) AS like_count, COUNT(DISTINCT `comment`.id) AS comment_count, (CASE WHEN EXISTS (SELECT 1 FROM `like` WHERE `like`.article_id = article.article_id AND `like`.ip_address = ?) THEN true ELSE false END) AS liked FROM article LEFT JOIN `like` ON `like`.article_id = article.article_id LEFT JOIN `comment` ON `comment`.article_id = article.article_id WHERE article.article_id < ? GROUP BY article.article_id ORDER BY article.creation_date DESC LIMIT 11;", [ipAddress, minId])
+    ) as ArticleInfoWithLike[] || [];    
     
     if (searchPhrase) {
         response.filter(articleInfo => articleInfo.article_header.toLowerCase().includes(searchPhrase.toLowerCase()) || articleInfo.article_description.toLowerCase().includes(searchPhrase.toLowerCase()));
