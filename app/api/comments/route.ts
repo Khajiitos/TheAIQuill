@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
       ipAddress = ipAddress.substring(7);
     }
 
-    const response: CommentInfoRow[] = await query("SELECT comment.*, COUNT(comment_like.comment_id) as like_count, (CASE WHEN EXISTS (SELECT 1 FROM `comment_like` WHERE `comment_like`.comment_id = comment.id AND `comment_like`.ip_address = ?) THEN true ELSE false END) AS comment_liked FROM comment LEFT JOIN comment_like ON comment_like.comment_id = comment.id WHERE comment.article_id = ? AND reply_to IS NULL GROUP BY comment.id ORDER BY comment.comment_date DESC", [ipAddress, articleId]) as CommentInfoRow[] || [];
+    const response: CommentInfoRow[] = await query("SELECT comment.*, COUNT(comment_like.id) as like_count, (CASE WHEN EXISTS (SELECT 1 FROM `comment_like` WHERE `comment_like`.comment_id = comment.id AND `comment_like`.ip_address = ?) THEN true ELSE false END) AS comment_liked FROM comment LEFT JOIN comment_like ON comment_like.comment_id = comment.id WHERE comment.article_id = ? AND reply_to IS NULL GROUP BY comment.id ORDER BY comment.comment_date DESC", [ipAddress, articleId]) as CommentInfoRow[] || [];
 
     const comments: CommentInfoWithLike[] = [];
 

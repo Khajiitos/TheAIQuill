@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { query } from '@/lib/db';
 
-const regex = /^[A-Za-z0-9 .:-]{3,64}$/;
+const regex = /^.{4,100}$/;
 
 export async function POST(req: NextRequest) {
     let ipAddress: string | undefined = req.headers.get('x-forwarded-for') || req.ip;
@@ -23,6 +23,8 @@ export async function POST(req: NextRequest) {
     const json: {suggestion: string} = await req.json();
 
     if (json.suggestion) {
+        json.suggestion = json.suggestion.replaceAll("\"", "'");
+
         if (regex.test(json.suggestion)) {
             console.log('[' + new Date().toISOString() + '] ' + ipAddress + ' suggested: ' + json.suggestion);
 

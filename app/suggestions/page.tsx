@@ -27,7 +27,7 @@ export default async function SuggestionsPage() {
     <main className="mt-3 text-text p-8">
         <h1 className="text-3xl font-bold mb-6 text-center">Suggestions</h1>
 
-        <div className='bg-background-lighter w-full pt-3 pb-3 mb-3 rounded-xl'>
+        <div className='bg-background-lighter pt-3 pb-3 mb-3 rounded-xl'>
           <p className='text-2xl text-center'>Tag</p>
 
           {suggestionResponse.length === 0 ?

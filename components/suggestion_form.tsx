@@ -2,7 +2,7 @@
 
 import { FormEvent } from "react";
 
-const regex = /^[A-Za-z0-9 .:-]{3,64}$/;
+const regex = /^.{4,100}$/;
 
 export default function SuggestionForm() {
     function onSubmit(e : FormEvent<HTMLFormElement>) {
