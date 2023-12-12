@@ -19,7 +19,7 @@ export default function Navigation() {
 				<Image src={open ? "/img/close.svg" : "/img/menu.svg"} alt={open ? "Close navigation" : "Open navigation"} width={50} height={50} onClick={() => setOpen(!open)} className="mr-6 cursor-pointer"></Image>
             </div>
 			{open &&
-			<div className="text-text">
+			<div className="text-text absolute w-full bg-background-lighter overflow-hidden shadow-xl">
 				<Link href="/article/random">
 					<div className="border-b-4 border-entry p-3 transition-colors h-full text-xl flex justify-center items-center">
 						<p>Random article</p>

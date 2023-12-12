@@ -45,6 +45,8 @@ export async function POST(req: NextRequest) {
                 author: json.author,
                 content: json.content,
                 comment_date: new Date(),
+                like_count: 0,
+                liked: false,
                 replies: []
             }
         });

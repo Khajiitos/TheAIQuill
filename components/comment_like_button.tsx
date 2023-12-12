@@ -30,8 +30,8 @@ export default function CommentLikeButton(props: {commentLiked: boolean, article
 
     return (
         <div className="flex items-center">
-            <p>{likeCount}</p>
-            <Image className="cursor-pointer mt-2" src={liked ? "/img/icon-star-fill.svg" : "/img/icon-star.svg"} alt="Like button" width={24} height={24} onClick={onClick}></Image>
+            <p className="m-0 mr-1 text-accent">{likeCount}</p>
+            <Image className="cursor-pointer mb-1" src={liked ? "/img/icon-star-fill.svg" : "/img/icon-star.svg"} alt="Like button" width={24} height={24} onClick={onClick}></Image>
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import { Pool, QueryOptions } from "mysql";
+import { MysqlError, Pool, QueryOptions } from "mysql";
 
 import { createPool } from "mysql";
 
@@ -13,9 +13,9 @@ const config = {
 
 const pool: Pool = createPool(config);
 
-export function query(sql: string | QueryOptions, values: Array<any>) {
+export function query(sql: string | QueryOptions, values: any[]) {
   return new Promise((resolve, reject) => {
-    pool.query(sql, values, (error, results) => {
+    pool.query(sql, values, (error: MysqlError | null, results: any[]) => {
       if (error) {
         reject(error);
       } else {

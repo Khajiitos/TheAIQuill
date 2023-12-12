@@ -23,11 +23,7 @@ export default function CommentEntry(props: {commentInfo: CommentInfoWithLike, a
             <p className="text-text text-sm mt-2">{props.commentInfo.content}</p>
             <div className="flex justify-between m-0">
                 <p className="text-sm m-0 text-accent" title={timeZone}>{formattedDate}</p>
-                <div>
-                    <p className="text-accent mr-3 text-sm">
-                        <CommentLikeButton commentId={props.commentInfo.id} commentLiked={props.commentInfo.comment_liked} likeCount={props.commentInfo.like_count} articleId={props.articleId}></CommentLikeButton>
-                    </p>
-                </div>
+                <CommentLikeButton commentId={props.commentInfo.id} commentLiked={props.commentInfo.comment_liked} likeCount={props.commentInfo.like_count} articleId={props.articleId}></CommentLikeButton>
             </div>
         </div>
 	);
