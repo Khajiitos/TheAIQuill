@@ -27,55 +27,39 @@ export default async function SuggestionsPage() {
     <main className="mt-3 text-text p-8">
         <h1 className="text-3xl font-bold mb-6 text-center">Suggestions</h1>
 
-        <div className='bg-background-lighter w-full'>
+        <div className='bg-background-lighter w-full pt-3 pb-3 mb-3 rounded-xl'>
           <p className='text-2xl text-center'>Tag</p>
 
           {suggestionResponse.length === 0 ?
-          <p>No suggested tags!</p>
+          <p className='text-primary text-center m-3'>No suggested tags!</p>
           :
           <>
           {suggestionResponse.map(obj => (
-            <div key={obj.tag} className='flex odd:flex-row-reverse'>
-              <div>{obj.tag}</div>
-              <div>{((obj.tag_count / totalCount) * 100).toFixed(1)}%</div>
+            <div key={obj.tag} className='flex odd:flex-row-reverse p-3 rounded-xl'>
+              <div className='bg-secondary p-4 rounded-xl m-2 shadow-2xl w-full text-sm'>{obj.tag}</div>
+              <div className='bg-accent p-4 rounded-xl m-2 shadow-2xl text-sm'>{((obj.tag_count / totalCount) * 100).toFixed(1)}%</div>
             </div>
           ))}
           </>
           }
         </div>
-        {suggestionResponse.length === 0 ? <p className='text-red-400 mt-5 font-semibold'>No suggested tags!</p> : <table className='mt-5 border-collapse border bg-green-700'>
-          <thead>
-          <tr>
-            <th className='py-4 px-6 border'>Tag</th>
-            <th className='py-4 px-6 border'>Chance</th>
-          </tr>
-          </thead>
-          <tbody>
-          {suggestionResponse.map(obj => (
-            <tr key={obj.tag} className='border-t'>
-              <td className='py-4 px-6 border'>{obj.tag}</td>
-              <td className='py-4 px-6 border'>{((obj.tag_count / totalCount) * 100).toFixed(1)}%</td>
-            </tr>
-          ))}
-          </tbody>
-        </table>}
 
-        {suggestionPersonalityResponse.length === 0 ? <p className='text-red-400 mt-5 font-semibold'>No suggested personalities!</p> : <table className='mt-5 border-collapse border bg-green-700'>
-          <thead>
-          <tr>
-            <th className='py-4 px-6 border'>Personality</th>
-            <th className='py-4 px-6 border'>Chance</th>
-          </tr>
-          </thead>
-          <tbody>
+        <div className='bg-background-lighter w-full pt-3 pb-3 mt-3 rounded-xl'>
+          <p className='text-2xl text-center'>Personality</p>
+
+          {suggestionResponse.length === 0 ?
+          <p className='text-primary text-center m-3'>No suggested personalities!</p>
+          :
+          <>
           {suggestionPersonalityResponse.map(obj => (
-            <tr key={obj.personality} className='border-t'>
-              <td className='py-4 px-6 border'>{obj.personality}</td>
-              <td className='py-4 px-6 border'>{((obj.personality_count / totalPersonalityCount) * 100).toFixed(1)}%</td>
-            </tr>
+            <div key={obj.personality} className='flex odd:flex-row-reverse p-3 rounded-xl'>
+              <div className='bg-secondary p-4 rounded-xl m-2 shadow-2xl w-full text-sm'>{obj.personality}</div>
+              <div className='bg-accent p-4 rounded-xl m-2 shadow-2xl text-sm'>{((obj.personality_count / totalPersonalityCount) * 100).toFixed(1)}%</div>
+            </div>
           ))}
-          </tbody>
-        </table>}
+          </>
+          }
+        </div>
     </main>
   )
 }
