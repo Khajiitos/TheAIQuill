@@ -47,7 +47,7 @@ export default function SuggestionForm() {
 
 	return (
         <form className="mt-2" onSubmit={onSubmit}>
-          <input className="rounded shadow text-black p-2 w-56" type="text" name="tag" maxLength={32}/>
+          <input className="rounded-full shadow text-black p-2 w-56 bg-secondary" type="text" name="tag" maxLength={32} placeholder="Suggestion..."/>
           <p><button type="submit" className="w-56 p-2 bg-green-800 mt-5 mb-5 rounded-lg hover:bg-green-700 transition-colors">Submit idea suggestion</button></p>
 
           <p className="text-red-500 font-semibold" id="error"></p>
