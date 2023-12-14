@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleAnalytics trackingID='G-3D9N36NYZ4'></GoogleAnalytics>
-      <body className={`overflow-x-hidden bg-background ${inter.className} ${theme}`}>
+      <body className={`mt-24 overflow-x-hidden bg-background ${inter.className} ${theme}`}>
         <Navigation></Navigation>
         {children}
         <Footer></Footer>

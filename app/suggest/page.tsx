@@ -14,10 +14,8 @@ export default async function SuggestPage() {
         <p>When an article gets generated, one random suggested idea gets selected, rest are cleared.</p>
         <p>You can view what ideas are suggested for the next article <Link href="/suggestions" className="text-blue-300 underline">here</Link>.</p>
 
-        <p className="font-semibold mt-8">Your article suggestion</p>
         <SuggestionForm></SuggestionForm>
 
-        <p className="font-semibold mt-8">Your AI personality suggestion</p>
         <SuggestionPersonalityForm options={personalities.map(personalityObj => personalityObj.personality)}></SuggestionPersonalityForm>
     </main>
   );

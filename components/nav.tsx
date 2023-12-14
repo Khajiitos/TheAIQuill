@@ -7,7 +7,7 @@ export default function Navigation() {
 	const [open, setOpen] = useState<boolean>(false);
 
 	return (
-		<nav className="m-0 sticky">
+		<nav className="top-0 fixed w-full bg-background">
             <div className="container-none text-text flex justify-between border-b-4 border-entry">
 				<div className="space-between">
 					<Link href="/">

@@ -1,6 +1,14 @@
 'use client'
 
+import { useEffect, useState } from "react";
+
 export default function ThemePage() {
+
+    const [currentTheme, setCurrentTheme] = useState<string | null>(null);
+
+    useEffect(() => {
+        setCurrentTheme(getCookieTheme());
+    });
 
     interface ThemeInfo {
         name: string;
@@ -48,15 +56,17 @@ export default function ThemePage() {
         }
     ];
 
-    function getCurrentTheme(): string | null {
-        for (let i = 0; i < document.body.classList.length; i++) {
-            const entry = document.body.classList.item(i);
-
-            if (entry?.startsWith("theme-")) {
-                return entry;
+    function getCookieTheme(): string | null {
+        const cookies = document.cookie.split(';');
+        
+        for (const cookie of cookies) {
+            const [name, value] = cookie.trim().split('=');
+    
+            if (name === 'theme') {
+                return value;
             }
         }
-
+    
         return null;
     }
      
@@ -71,15 +81,17 @@ export default function ThemePage() {
         const expireDate = new Date();
         expireDate.setFullYear(expireDate.getFullYear() + 1);
         document.cookie = `theme=${theme.className}; expires=${expireDate.toUTCString()}; path=/`;
+        setCurrentTheme(theme.className);
     }
 
     return (
         <main className="mt-3 text-text p-8">
-            <p className='text-4xl text-center mb-5'>Themes</p>
+            <p className='text-4xl text-center mb-3'>Themes</p>
+            <p className='text-2xl text-yellow-500 text-center mb-5'>WIP</p>
 
             <div>
                 {themes.map(theme => (
-                    <div key={theme.className} className={`m-4 items-center p-5 cursor-pointer flex ${theme.className === getCurrentTheme() ? "bg-background-lighter" : "bg-primary"} rounded-lg`} onClick={_e => setTheme(theme)}>
+                    <div key={theme.className} className={`m-4 items-center p-5 cursor-pointer flex ${theme.className === currentTheme ? "bg-background-lighter" : "bg-primary"} rounded-lg`} onClick={_e => setTheme(theme)}>
                         <div className="rounded-full p-10 border-2 border-black" style={{backgroundColor: theme.colorPrimary, borderColor: theme.colorAccent}}></div>
                         <p className="text-2xl ml-6">{theme.name}</p>
                     </div>

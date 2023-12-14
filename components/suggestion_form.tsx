@@ -46,12 +46,16 @@ export default function SuggestionForm() {
     }
 
 	return (
-        <form className="mt-2" onSubmit={onSubmit}>
-          <input className="rounded-full shadow text-black p-2 w-56 bg-secondary" type="text" name="tag" maxLength={32} placeholder="Suggestion..."/>
-          <p><button type="submit" className="w-56 p-2 bg-green-800 mt-5 mb-5 rounded-lg hover:bg-green-700 transition-colors">Submit idea suggestion</button></p>
+        <form className="mt-6 bg-background-lighter rounded-xl p-5 flex justify-center" onSubmit={onSubmit}>
+          <div>
+            <p className="font-semibold text-xl text-center m-4">Your article suggestion</p>
 
-          <p className="text-red-500 font-semibold" id="error"></p>
-          <p className="font-semibold" id="message"></p>
+            <input className="rounded-full shadow text-black p-3 w-56 bg-accent text-text shadow-xl" type="text" name="tag" maxLength={32} placeholder="Suggestion..."/>
+            <p><button type="submit" className="w-56 p-2 bg-secondary mt-5 mb-5 rounded-lg hover:bg-primary transition-colors">Submit idea suggestion</button></p>
+
+            <p className="text-red-500 font-semibold" id="error"></p>
+            <p className="font-semibold" id="message"></p>
+          </div>
         </form>
 	);
 }
