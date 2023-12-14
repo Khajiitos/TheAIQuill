@@ -58,8 +58,7 @@ export default function CommentSection(props: {articleId: number}) {
 	return (
         <>
         <aside className="mt-12 bg-entry rounded-lg p-5 w-full p-10 text-text">
-            <p>Do you have anything to say about this article?</p>
-            <p>Leave a comment!</p>
+            <p>Do you have anything to say about this article?<br/>Leave a comment!</p>
 
             {<>
             <form className="mt-5 rounded" onSubmit={onAddComment}>

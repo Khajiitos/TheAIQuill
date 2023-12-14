@@ -4,6 +4,7 @@ import './globals.css'
 import Navigation from '@/components/nav'
 import Footer from '@/components/footer'
 import GoogleAnalytics from '@/components/google_analytics'
+import { cookies } from 'next/headers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,10 +27,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const theme = cookies().get('theme')?.value || 'theme-sutac';
+
   return (
     <html lang="en">
       <GoogleAnalytics trackingID='G-3D9N36NYZ4'></GoogleAnalytics>
-      <body className={'overflow-x-hidden bg-background ' + inter.className}>
+      <body className={`overflow-x-hidden bg-background ${inter.className} ${theme}`}>
         <Navigation></Navigation>
         {children}
         <Footer></Footer>

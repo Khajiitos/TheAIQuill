@@ -35,6 +35,11 @@ export default function Navigation() {
 						<p>About</p>
 					</div>
 				</Link>
+				<Link href="/theme">
+					<div className="border-b-4 border-entry p-3 transition-colors h-full text-xl flex justify-center items-center">
+						<p>Theme</p>
+					</div>
+				</Link>
 			</div>
 			}
 		</nav>
