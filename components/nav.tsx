@@ -20,11 +20,11 @@ export default function Navigation() {
             </div>
 			{open &&
 			<div className="text-text absolute w-full bg-background-lighter overflow-hidden shadow-xl">
-				<Link href="/article/random">
+				<a href="/article/random">
 					<div className="border-b-4 border-entry p-3 transition-colors h-full text-xl flex justify-center items-center">
 						<p>Random article</p>
 					</div>
-				</Link>
+				</a>
 				<Link href="/suggest">
 					<div className="border-b-4 border-entry p-3 transition-colors w-full text-xl flex justify-center items-center">
 						<p>Suggest</p>
