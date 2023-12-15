@@ -2,8 +2,8 @@ import { NextRequest } from 'next/server';
 import { query } from '@/lib/db';
 import { CommentInfoRow } from '@/types/comments';
 
-const authorNameRegex = /^[a-zA-Z0-9\u00C0-\u017F\s']{3,64}$/;
-const commentContentRegex = /^[\w\s.,'"!?(){}[\]]{3,256}$/;
+const authorNameRegex = /^.{3,64}$/;
+const commentContentRegex = /^.{3,256}$/;
 
 export async function POST(req: NextRequest) {
     let ipAddress: string | undefined = req.headers.get('x-forwarded-for') || req.ip;

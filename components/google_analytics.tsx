@@ -1,6 +1,6 @@
 import Script from "next/script";
 
-export default async function GoogleAnalytics(props: {trackingID: string}) {
+export default function GoogleAnalytics(props: {trackingID: string}) {
     return (
         <>
           <Script
