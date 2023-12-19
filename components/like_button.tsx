@@ -32,7 +32,7 @@ export default function LikeButton(props: {articleLiked: boolean, articleId: num
             <p className="pl-3 pr-1 select-none">Did you like this article?<br/>Rate it by leaving a like!</p>
 
             <div className="pr-3">
-                <Image className="cursor-pointer mt-2" src={liked ? "/img/icon-star-fill.svg" : "/img/icon-star.svg"} alt="Like button" width={32} height={32} onClick={onClick}></Image>
+                <Image className="cursor-pointer mt-2 colored-svg" src={liked ? "/img/icon-star-fill.svg" : "/img/icon-star.svg"} alt="Like button" width={32} height={32} onClick={onClick}></Image>
                 <p className="text-center m-1">{likeCount}</p>
             </div>
         </div>

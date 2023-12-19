@@ -30,15 +30,15 @@ export default function ArticleEntry(props: {articleInfo: ArticleInfoWithLike}) 
                     <div className="flex">
                         <p className="text-accent mr-3">
                             {likeCount}
-                            <Image className="inline ml-1" src="/img/icon-star-fill.svg" alt="Star icon" width={16} height={16}></Image>
+                            <Image className="inline ml-1 colored-svg" src="/img/icon-star-fill.svg" alt="Star icon" width={16} height={16}></Image>
                         </p>
                         <p className="text-accent mr-3">
                             {commentCount}
-                            <Image className="inline ml-1" src="/img/icon-comment.svg" alt="Comment icon" width={16} height={16}></Image>
+                            <Image className="inline ml-1 colored-svg" src="/img/icon-comment.svg" alt="Comment icon" width={16} height={16}></Image>
                         </p>
                         <p className="text-accent mr-3">
                             {minutesOfReading} min
-                            <Image className="inline ml-1" src="/img/icon-time.svg" alt="Time icon" width={16} height={16}></Image>
+                            <Image className="inline ml-1 colored-svg" src="/img/icon-time.svg" alt="Time icon" width={16} height={16}></Image>
                         </p>
                     </div>
                     <p className="text-accent" title={timeZone}>{formattedDate}</p>

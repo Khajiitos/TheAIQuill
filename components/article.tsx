@@ -3,24 +3,13 @@ import { parse } from 'marked'
 import Image from "next/image";
 import LikeButton from "./like_button";
 import CommentSection from "./comment_section";
+import ArticleInnerStats from "./article_inner_stats";
 
 export default async function Article(props: {articleInfo: ArticleInfoWithLike | null}) {
 
     const wordCount: number = props.articleInfo ? props.articleInfo.article_content.split(" ").length : 0;
     const minutesOfReading: number = Math.ceil(wordCount / 230);
-      
-    const formattedDate = props.articleInfo ? props.articleInfo.creation_date.toLocaleDateString('en-US', {
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        hourCycle: 'h23',
-        hour12: false,
-    }) : '';
-
-    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-      
+            
     const likeCount = props.articleInfo ? props.articleInfo.like_count : 0;
     const commentCount = props.articleInfo ? props.articleInfo.comment_count : 0;
 
@@ -30,25 +19,7 @@ export default async function Article(props: {articleInfo: ArticleInfoWithLike |
                 <header>
                 {<h1 className="font-semibold text-center text-4xl mb-12">{props.articleInfo?.article_header || <span className="text-red-500">Article doesn&apos;t exist</span>}</h1>}
                 {props.articleInfo && 
-                <aside>
-                    <div className="bg-entry p-2 pl-4 pr-4 mt-6 mb-4 flex items-center justify-between rounded-xl">
-                    <p className="text-accent m-0" title={timeZone}>{formattedDate}</p>
-                    <div className="flex">
-                    <p className="text-accent mr-3">
-                            {likeCount}
-                            <Image className="inline ml-1" src="/img/icon-star-fill.svg" alt="Star icon" width={16} height={16}></Image>
-                        </p>
-                        <p className="text-accent mr-3">
-                            {commentCount}
-                            <Image className="inline ml-1" src="/img/icon-comment.svg" alt="Comment icon" width={16} height={16}></Image>
-                        </p>
-                        <p className="text-accent mr-3">
-                            {minutesOfReading} min
-                            <Image className="inline ml-1" src="/img/icon-time.svg" alt="Time icon" width={16} height={16}></Image>
-                        </p>
-                    </div>
-                    </div>
-                </aside>
+                    <ArticleInnerStats minutesOfReading={minutesOfReading} likeCount={likeCount} commentCount={commentCount} creationDate={props.articleInfo.creation_date}></ArticleInnerStats>
                 }
                 </header>
                 <section dangerouslySetInnerHTML={{__html: innerHTML}}></section>
