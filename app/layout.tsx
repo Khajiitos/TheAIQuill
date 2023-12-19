@@ -6,6 +6,7 @@ import Footer from '@/components/footer'
 import GoogleAnalytics from '@/components/google_analytics'
 import { cookies } from 'next/headers'
 import HCaptcha from '@/components/hcaptcha'
+import GoogleAds from '@/components/google_ads'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,6 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleAnalytics trackingID='G-3D9N36NYZ4'></GoogleAnalytics>
+      <GoogleAds client='ca-pub-3470532463430577'></GoogleAds>
       <HCaptcha></HCaptcha>
       <body className={`mt-24 overflow-x-hidden bg-background ${inter.className} ${theme}`}>
         <Navigation></Navigation>
