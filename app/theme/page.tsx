@@ -8,7 +8,7 @@ export default function ThemePage() {
 
     useEffect(() => {
         setCurrentTheme(getCookieTheme());
-    });
+    }, []);
 
     interface ThemeInfo {
         name: string;
