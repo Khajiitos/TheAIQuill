@@ -1,4 +1,9 @@
-.theme-sutac {
+@font-face {
+    font-family: "Baloo";
+    src: url("/font/Baloo2-VariableFont_wght.ttf");
+}
+
+:root:has(.theme-sutac) {
     --color-text: #eff0eb;
     --color-background: #0b0c05;
     --color-background-lighter: #0d1107;
@@ -10,7 +15,7 @@
     --color-input: #24351d;
 }
 
-.theme-twilight-serenity {
+:root:has(.theme-twilight-serenity) {
     --color-text: #ffffff;
     --color-background: #1b1e28;
     --color-background-lighter: #2c303f;
@@ -22,7 +27,7 @@
     --color-input: #10141d;
 }
 
-.theme-dark-elegance {
+:root:has(.theme-dark-elegance) {
     --color-text: #d5d5d5;
     --color-background: #2c2c2c;
     --color-background-lighter: #424242;
@@ -34,7 +39,7 @@
     --color-input: #1f1f1f;
 }
 
-.theme-modern-monochrome {
+:root:has(.theme-modern-monochrome) {
     --color-text: #f3f3f3;
     --color-background: #2e2e2e;
     --color-background-lighter: #3c3c3c;
@@ -46,7 +51,7 @@
     --color-input: #262626;
 }
 
-.theme-light-breeze {
+:root:has(.theme-light-breeze) {
     --color-text: #81d4fa;
     --color-background: #ffffff;
     --color-background-lighter: #f5f5f5;
@@ -58,7 +63,7 @@
     --color-input: #cfd8dc;
 }
 
-.theme-frosty-blue {
+:root:has(.theme-frosty-blue) {
     --color-text: #f5f5f5;
     --color-background: #1e1e1e;
     --color-background-lighter: #2a2a2a;
@@ -70,45 +75,66 @@
     --color-input: #252525;
 }
 
-@font-face {
-    font-family: "Baloo";
-    src: url("/font/Baloo2-VariableFont_wght.ttf");
-}
+/* --- */
 
 * {
+    box-sizing: border-box;
+}
+
+html {
     font-family: "Baloo", sans-serif;
+    color: var(--color-text);
 }
 
-article p {
-    margin: 12px 0 12px 0;
+body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-background);
 }
 
-article h1 {
+/* --- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+h1 {
     font-size: 2rem;
     font-weight: bold;
 }
 
-article h2 {
+h2 {
     font-size: 1.75rem;
     font-weight: bold;
 }
 
-article h3 {
+h3 {
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-article h4 {
+h4 {
     font-size: 1.25rem;
     font-weight: bold;
 }
 
-article h5 {
+h5 {
     font-size: 1.125rem;
     font-weight: bold;
 }
 
-article h6 {
+h6 {
     font-size: 1rem;
     font-weight: bold;
+}
+
+p {
+    font-size: 1rem;
 }
