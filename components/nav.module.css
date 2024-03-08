@@ -1,6 +1,7 @@
 .nav {
     position: relative;
     isolation: isolate;
+    z-index: 100;
 }
 
 .nav > header {

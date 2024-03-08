@@ -1,13 +1,8 @@
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
     padding: 1rem;
-    margin-top: 1rem;
+    margin-top: 2.5rem;
     border-top: 1px solid var(--color-primary);
     text-align: center;
-    z-index: -2;
 }
 
 .footer > * {
