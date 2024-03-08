@@ -138,3 +138,26 @@ h6 {
 p {
     font-size: 1rem;
 }
+
+small {
+    font-size: 0.8rem;
+    display: block;
+}
+
+/* --- */
+
+body > .app {
+    margin-bottom: clamp(5rem, 15%, 10rem);
+    width: 100%;
+}
+
+a {
+    color: var(--color-accent);
+    text-shadow: 0 0 0.125rem
+        color-mix(in srgb, currentColor 100%, transparent 50%);
+}
+
+a:hover,
+a:focus {
+    opacity: 0.8;
+}

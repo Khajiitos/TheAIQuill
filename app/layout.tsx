@@ -48,7 +48,7 @@ export default function RootLayout({
             <HCaptcha></HCaptcha>
             <body className={`${inter.className} ${theme}`}>
                 <Navigation></Navigation>
-                {children}
+                <div className="app">{children}</div>
                 <Footer></Footer>
             </body>
         </html>
