@@ -36,13 +36,17 @@
 
 .hamburger {
     cursor: pointer;
-    transition: scale 100ms ease-out;
+    transition: opacity 150ms ease-out, rotate 200ms ease-out;
 }
 
 .hamburger:hover,
 .hamburger:focus-within {
     scale: 1.05;
     opacity: 0.9;
+}
+
+.hamburger:active {
+    rotate: 360deg;
 }
 
 .nav:has(.dropout) > header {
@@ -79,7 +83,7 @@
 
 .backdrop {
     position: fixed;
-    z-index: -10;
+    z-index: 0;
     inset: 0;
     width: 100vw;
     height: 100vh;
