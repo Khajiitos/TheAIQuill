@@ -161,3 +161,23 @@ a:hover,
 a:focus {
     opacity: 0.8;
 }
+
+/* --- */
+
+.desktop {
+    display: none;
+}
+
+.mobile {
+    display: block;
+}
+
+@media (width >= 700px) {
+    .desktop {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
+}

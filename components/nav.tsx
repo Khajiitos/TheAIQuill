@@ -2,57 +2,59 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import styles from "./nav.module.css";
 
 export default function Navigation() {
     const [open, setOpen] = useState<boolean>(false);
 
     return (
-        <nav>
-            <div>
-                <div>
-                    <Link href="/">
-                        <div>
-                            <Image
-                                src="/img/logo-64x64.png"
-                                alt="The AI Quill logo"
-                                width={50}
-                                height={50}
-                            ></Image>
+        <>
+            <nav className={styles.nav}>
+                <header>
+                    <div className={styles.logoContainer}>
+                        <div className={styles.logo}>
+                            <Link href="/">
+                                <Image
+                                    src="/img/logo-64x64.png"
+                                    alt="The AI Quill logo"
+                                    width={50}
+                                    height={50}
+                                ></Image>
+                            </Link>
                         </div>
-                    </Link>
-                </div>
-                <Image
-                    src={open ? "/img/close.svg" : "/img/menu.svg"}
-                    alt={open ? "Close navigation" : "Open navigation"}
-                    width={50}
-                    height={50}
-                    onClick={() => setOpen(!open)}
-                ></Image>
-            </div>
-            {open && (
-                <div>
-                    <a href="/article/random">
-                        <div>
-                            <p>Random article</p>
-                        </div>
-                    </a>
-                    <Link href="/suggest">
-                        <div>
-                            <p>Suggest</p>
-                        </div>
-                    </Link>
-                    <Link href="/about">
-                        <div>
-                            <p>About</p>
-                        </div>
-                    </Link>
-                    <Link href="/theme">
-                        <div>
-                            <p>Theme</p>
-                        </div>
-                    </Link>
-                </div>
-            )}
-        </nav>
+                        <p className="desktop">The AIQuill</p>
+                    </div>
+
+                    <p className="mobile">The AIQuill</p>
+
+                    <div className={styles.hamburger}>
+                        <Image
+                            src={open ? "/img/close.svg" : "/img/menu.svg"}
+                            alt={open ? "Close navigation" : "Open navigation"}
+                            width={50}
+                            height={50}
+                            onClick={() => setOpen(!open)}
+                        ></Image>
+                    </div>
+                </header>
+                {open && (
+                    <menu className={styles.dropout}>
+                        <li>
+                            <a href="/article/random">Random article</a>
+                        </li>
+                        <li>
+                            <Link href="/suggest">Suggest</Link>
+                        </li>
+                        <li>
+                            <Link href="/about">About</Link>
+                        </li>
+                        <li>
+                            <Link href="/theme">Theme</Link>
+                        </li>
+                    </menu>
+                )}
+            </nav>
+            {open && <div className={styles.backdrop}></div>}
+        </>
     );
 }
