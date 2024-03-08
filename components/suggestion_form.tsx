@@ -1,6 +1,6 @@
 "use client";
-
 import { FormEvent } from "react";
+import styles from "./suggestion_form.module.css";
 
 const regex = /^.{4,100}$/;
 
@@ -50,9 +50,12 @@ export default function SuggestionForm() {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className={styles.form}>
             <div>
-                <p>Your article suggestion</p>
+                <h2>Your article suggestion</h2>
+
+                <small id="error"></small>
+                <small id="message"></small>
 
                 <input
                     type="text"
@@ -60,12 +63,8 @@ export default function SuggestionForm() {
                     maxLength={100}
                     placeholder="Suggestion..."
                 />
-                <p>
-                    <button type="submit">Submit idea suggestion</button>
-                </p>
 
-                <p id="error"></p>
-                <p id="message"></p>
+                <button type="submit">Submit idea suggestion</button>
             </div>
         </form>
     );

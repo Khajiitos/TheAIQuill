@@ -2,6 +2,7 @@ import SuggestionForm from "@/components/suggestion_form";
 import SuggestionPersonalityForm from "@/components/suggestion_personality_form";
 import { query } from "@/lib/db";
 import Link from "next/link";
+import styles from "./page.module.css";
 
 export default async function SuggestPage() {
     const personalities: Array<{ personality: string }> = (await query(
@@ -10,7 +11,7 @@ export default async function SuggestPage() {
     )) as Array<{ personality: string }>;
 
     return (
-        <main>
+        <main className={styles.main}>
             <h1>Suggest an article</h1>
             <p>
                 Here you will be able to suggest an article idea or AI&apos;s

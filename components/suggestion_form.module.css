@@ -1,0 +1,78 @@
+.form {
+    margin: 2rem 0;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    background-color: color-mix(in srgb, currentColor 15%, transparent 100%);
+    text-align: center;
+}
+
+.form h2 {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+.form input {
+    width: 100%;
+    margin: auto;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5);
+    font-size: 0.8em;
+    transition: all 150ms ease-out;
+}
+
+.form input::placeholder {
+    color: var(--color-text);
+    opacity: 0.6;
+}
+
+.form input[value=""] {
+    background-color: color-mix(
+        in srgb,
+        var(--color-secondary) 100%,
+        transparent 75%
+    );
+}
+
+.form input:hover {
+    scale: 1.025;
+}
+
+.form input:focus {
+    outline: none;
+    box-shadow: 0 0 0.25rem 1px var(--color-accent);
+}
+
+.form button {
+    --_bg-opacity: 50%;
+    width: 100%;
+    margin: 1rem auto;
+    padding: 1rem 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5);
+    background-color: color-mix(
+        in srgb,
+        var(--color-secondary) var(--_bg-opacity),
+        transparent 100%
+    );
+    color: var(--color-text);
+    font-size: 0.8rem;
+    transition: all 100ms ease-out;
+}
+
+.form button:hover,
+.form button:focus {
+    --_bg-opacity: 100%;
+    scale: 1.025;
+    outline: none;
+}
+
+.form button:active {
+    background-color: var(--color-secondary);
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5),
+        0 0 0.125rem 0.125rem var(--color-secondary);
+}

@@ -1,6 +1,6 @@
 "use client";
-
 import { FormEvent } from "react";
+import styles from "./suggestion_personality_form.module.css";
 
 export default function SuggestionPersonalityForm(props: {
     options: string[];
@@ -44,21 +44,19 @@ export default function SuggestionPersonalityForm(props: {
     }
 
     return (
-        <form onSubmit={onSubmitPersonality}>
-            <div>
-                <p>Your AI personality suggestion</p>
-                <select name="personality">
-                    {props.options.map((personality) => (
-                        <option key={personality}>{personality}</option>
-                    ))}
-                </select>
-                <p>
-                    <button type="submit">Submit personality suggestion</button>
-                </p>
+        <form onSubmit={onSubmitPersonality} className={styles.form}>
+            <h2>Your AI personality suggestion</h2>
 
-                <p id="error-personality"></p>
-                <p id="message-personality"></p>
-            </div>
+            <small id="error-personality"></small>
+            <small id="message-personality"></small>
+
+            <select name="personality">
+                {props.options.map((personality) => (
+                    <option key={personality}>{personality}</option>
+                ))}
+            </select>
+
+            <button type="submit">Submit personality suggestion</button>
         </form>
     );
 }
