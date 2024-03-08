@@ -1,17 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
+import styles from "./page.module.css";
 
 export default async function AboutPage() {
     return (
-        <main>
-            <div>
+        <main className={styles.main}>
+            <div className={styles.hero}>
                 <p>The AI Quill</p>
-                <Image
-                    src="/img/logo-512x512.png"
-                    alt="The AI Quill logo"
-                    width={128}
-                    height={128}
-                />
+                <div className={styles.logo}>
+                    <Image
+                        src="/img/logo-512x512.png"
+                        alt="The AI Quill logo"
+                        width={128}
+                        height={128}
+                    />
+                </div>
             </div>
             <h1>About</h1>
             <p>
@@ -25,18 +28,40 @@ export default async function AboutPage() {
             </p>
             <p>
                 The source code of this website is available{" "}
-                <Link href="https://github.com/Khajiitos/TheAIQuill/">
+                <a
+                    href="https://github.com/Khajiitos/TheAIQuill/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     here
-                </Link>
-                .
+                </a>
             </p>
             <p>
                 Made by{" "}
-                <Link href="https://github.com/Khajiitos">Khajiitos</Link>{" "}
-                <Link href="https://khajiitos.fun">(personal website)</Link>
+                <a
+                    href="https://github.com/Khajiitos"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Khajiitos
+                </a>
+                <a
+                    href="https://khajiitos.fun"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    (personal website)
+                </a>
             </p>
-            <p className="mt-1">
-                Designed by <Link href="https://github.com/sutaC">sutaC</Link>
+            <p>
+                Designed by{" "}
+                <a
+                    href="https://github.com/sutaC"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    sutaC
+                </a>
             </p>
         </main>
     );

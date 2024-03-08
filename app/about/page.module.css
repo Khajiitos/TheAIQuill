@@ -1,0 +1,30 @@
+.main {
+    padding: 1rem;
+    max-width: 40rem;
+    margin: auto;
+}
+
+.main > * {
+    margin: 1rem auto;
+}
+
+.main > h1 {
+    text-align: center;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero > p {
+    font-size: 1.75rem;
+}
+
+.logo {
+    border-radius: 100%;
+    color: var(--color-primary);
+    background-color: color-mix(in srgb, currentColor 50%, transparent 100%);
+}
