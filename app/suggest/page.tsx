@@ -31,13 +31,15 @@ export default async function SuggestPage() {
                 <Link href="/suggestions">here</Link>.
             </p>
 
-            <SuggestionForm></SuggestionForm>
+            <div className={styles.forms}>
+                <SuggestionForm></SuggestionForm>
 
-            <SuggestionPersonalityForm
-                options={personalities.map(
-                    (personalityObj) => personalityObj.personality
-                )}
-            ></SuggestionPersonalityForm>
+                <SuggestionPersonalityForm
+                    options={personalities.map(
+                        (personalityObj) => personalityObj.personality
+                    )}
+                ></SuggestionPersonalityForm>
+            </div>
         </main>
     );
 }

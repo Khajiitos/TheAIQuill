@@ -1,7 +1,22 @@
 .main {
     padding: 1rem;
+    max-width: 50rem;
+    margin: auto;
 }
 
 .main > h1 {
     text-align: center;
+}
+
+@media (width >= 700px) {
+    .forms {
+        display: flex;
+        justify-content: space-between;
+
+        gap: 1rem;
+    }
+
+    .forms > * {
+        flex: 1;
+    }
 }

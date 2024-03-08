@@ -40,16 +40,30 @@ export default function Navigation() {
                 {open && (
                     <menu className={styles.dropout}>
                         <li>
-                            <a href="/article/random">Random article</a>
+                            <a
+                                href="/article/random"
+                                onClick={() => setOpen(false)}
+                            >
+                                Random article
+                            </a>
                         </li>
                         <li>
-                            <Link href="/suggest">Suggest</Link>
+                            <Link
+                                href="/suggest"
+                                onClick={() => setOpen(false)}
+                            >
+                                Suggest
+                            </Link>
                         </li>
                         <li>
-                            <Link href="/about">About</Link>
+                            <Link href="/about" onClick={() => setOpen(false)}>
+                                About
+                            </Link>
                         </li>
                         <li>
-                            <Link href="/theme">Theme</Link>
+                            <Link href="/theme" onClick={() => setOpen(false)}>
+                                Theme
+                            </Link>
                         </li>
                     </menu>
                 )}
