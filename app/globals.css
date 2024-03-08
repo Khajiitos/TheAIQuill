@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 .theme-sutac {
     --color-text: #eff0eb;
     --color-background: #0b0c05;
@@ -12,7 +8,6 @@
     --color-entry: #1d1e19;
     --color-entry-hover: #494a41;
     --color-input: #24351d;
-    --svg-color-filter: brightness(0) saturate(100%) invert(56%) sepia(9%) saturate(1998%) hue-rotate(70deg) brightness(96%) contrast(106%);
 }
 
 .theme-twilight-serenity {
@@ -25,7 +20,6 @@
     --color-entry: #393d4f;
     --color-entry-hover: #565a6f;
     --color-input: #10141d;
-    --svg-color-filter: brightness(0) saturate(100%) invert(45%) sepia(23%) saturate(635%) hue-rotate(198deg) brightness(96%) contrast(97%);
 }
 
 .theme-dark-elegance {
@@ -38,7 +32,6 @@
     --color-entry: #333333;
     --color-entry-hover: #555555;
     --color-input: #1f1f1f;
-    --svg-color-filter: brightness(0) saturate(100%) invert(75%) sepia(63%) saturate(5372%) hue-rotate(323deg) brightness(105%) contrast(101%);
 }
 
 .theme-modern-monochrome {
@@ -51,7 +44,6 @@
     --color-entry: #353535;
     --color-entry-hover: #4d4d4d;
     --color-input: #262626;
-    --svg-color-filter: brightness(0) saturate(100%) invert(58%) sepia(40%) saturate(6442%) hue-rotate(153deg) brightness(104%) contrast(101%);
 }
 
 .theme-light-breeze {
@@ -64,7 +56,6 @@
     --color-entry: #eeeeee;
     --color-entry-hover: #f0f0f0;
     --color-input: #cfd8dc;
-    --svg-color-filter: brightness(0) saturate(100%) invert(57%) sepia(82%) saturate(5264%) hue-rotate(316deg) brightness(100%) contrast(104%);
 }
 
 .theme-frosty-blue {
@@ -77,20 +68,15 @@
     --color-entry: #363636;
     --color-entry-hover: #4b4b4b;
     --color-input: #252525;
-    --svg-color-filter: brightness(0) saturate(100%) invert(58%) sepia(94%) saturate(692%) hue-rotate(181deg) brightness(104%) contrast(93%);
-}
-
-.colored-svg {
-    filter: var(--svg-color-filter);
 }
 
 @font-face {
-    font-family: 'Baloo';
-    src: url('/font/Baloo2-VariableFont_wght.ttf');
+    font-family: "Baloo";
+    src: url("/font/Baloo2-VariableFont_wght.ttf");
 }
 
 * {
-    font-family: 'Baloo', sans-serif;
+    font-family: "Baloo", sans-serif;
 }
 
 article p {
