@@ -1,15 +1,14 @@
 import ArticleContainer from "@/components/article_container";
+import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
     return (
-        <main>
-            <h3>Latest articles</h3>
+        <main className={styles.main}>
+            <h1>Latest articles</h1>
 
-            <div>
-                <ArticleContainer></ArticleContainer>
-            </div>
+            <ArticleContainer></ArticleContainer>
         </main>
     );
 }

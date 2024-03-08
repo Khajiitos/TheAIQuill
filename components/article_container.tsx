@@ -3,6 +3,7 @@ import { ArticleInfoWithLike, PartialArticles } from "@/types/articles";
 import { useEffect, useState } from "react";
 import ArticleEntry from "./article_entry";
 import SearchBar from "./search_bar";
+import styles from "./article_container.module.css";
 
 export default function ArticleContainer() {
     const [articles, setArticles] = useState<ArticleInfoWithLike[]>([]);
@@ -80,50 +81,51 @@ export default function ArticleContainer() {
     });
 
     return (
-        <div>
-            <div>
-                <SearchBar
-                    onUpdate={(phrase) => {
-                        setSearchPhrase(phrase);
-                        setArticles(
-                            articles.sort(
-                                (a, b) =>
-                                    b.creation_date.getTime() -
-                                    a.creation_date.getTime()
-                            )
-                        );
-                        setHasMore(true);
-                        checkIfDiscovered();
-                    }}
-                ></SearchBar>
-            </div>
-            {articles.length === 0 && !hasMore ? (
-                <p>Empty!</p>
-            ) : (
-                articles.map(
-                    (articleInfo) =>
-                        (articleInfo.article_header
-                            .toLowerCase()
-                            .includes(searchPhrase.toLowerCase()) ||
-                            articleInfo.article_description
-                                .toLowerCase()
-                                .includes(searchPhrase.toLowerCase())) && (
-                            <ArticleEntry
-                                key={
-                                    articleInfo.slug +
-                                    "-" +
-                                    articleInfo.article_id
-                                }
-                                articleInfo={articleInfo}
-                            ></ArticleEntry>
+        <>
+            <SearchBar
+                onUpdate={(phrase) => {
+                    setSearchPhrase(phrase);
+                    setArticles(
+                        articles.sort(
+                            (a, b) =>
+                                b.creation_date.getTime() -
+                                a.creation_date.getTime()
                         )
-                )
+                    );
+                    setHasMore(true);
+                    checkIfDiscovered();
+                }}
+            ></SearchBar>
+
+            {articles.length === 0 && !hasMore ? (
+                <small>Empty!</small>
+            ) : (
+                <div className={styles.articleContainer}>
+                    {articles.map(
+                        (articleInfo) =>
+                            (articleInfo.article_header
+                                .toLowerCase()
+                                .includes(searchPhrase.toLowerCase()) ||
+                                articleInfo.article_description
+                                    .toLowerCase()
+                                    .includes(searchPhrase.toLowerCase())) && (
+                                <ArticleEntry
+                                    key={
+                                        articleInfo.slug +
+                                        "-" +
+                                        articleInfo.article_id
+                                    }
+                                    articleInfo={articleInfo}
+                                ></ArticleEntry>
+                            )
+                    )}
+                </div>
             )}
             {hasMore ? (
-                <p id="loading-paragraph">Loading...</p>
+                <small id="loading-paragraph">Loading...</small>
             ) : (
-                <p>That&apos;s everything!</p>
+                <small>That&apos;s everything!</small>
             )}
-        </div>
+        </>
     );
 }
