@@ -1,6 +1,6 @@
 "use client";
-
 import { useEffect, useState } from "react";
+import styles from "./page.module.css";
 
 export default function ThemePage() {
     const [currentTheme, setCurrentTheme] = useState<string | null>(null);
@@ -86,26 +86,33 @@ export default function ThemePage() {
     }
 
     return (
-        <main>
-            <p>Themes</p>
+        <main className={styles.main}>
+            <h1>Themes</h1>
             <p>WIP</p>
 
-            <div>
+            <ul className={styles.themes}>
                 {themes.map((theme) => (
-                    <div
-                        key={theme.className}
-                        onClick={(_e) => setTheme(theme)}
-                    >
-                        <div
-                            style={{
-                                backgroundColor: theme.colorPrimary,
-                                borderColor: theme.colorAccent,
-                            }}
-                        ></div>
-                        <p>{theme.name}</p>
-                    </div>
+                    <li key={theme.className}>
+                        <button
+                            onClick={(_e) => setTheme(theme)}
+                            className={`${styles.theme} ${
+                                theme.className === currentTheme
+                                    ? styles.selected
+                                    : ""
+                            }`}
+                        >
+                            <div
+                                className={styles.sample}
+                                style={{
+                                    backgroundColor: theme.colorPrimary,
+                                    borderColor: theme.colorAccent,
+                                }}
+                            ></div>
+                            <p>{theme.name}</p>
+                        </button>
+                    </li>
                 ))}
-            </div>
+            </ul>
         </main>
     );
 }
