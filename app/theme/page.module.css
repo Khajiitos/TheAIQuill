@@ -27,10 +27,11 @@ ul.themes {
     text-align: left;
     cursor: pointer;
     transition: all 150ms ease-out;
+    outline: none;
 }
 
-.theme:not(.selected):hover,
-.theme:not(.selected):focus-within {
+.theme:hover,
+.theme:focus-within {
     scale: 1.025;
 }
 

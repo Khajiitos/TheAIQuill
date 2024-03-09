@@ -1,8 +1,12 @@
 .footer {
+    position: sticky;
+    top: 100vh;
     padding: 1rem;
-    margin-top: 2.5rem;
+    margin-top: 1rem;
     border-top: 1px solid var(--color-primary);
+    box-shadow: 0 -0.125rem 0.125rem var(--color-primary-light);
     text-align: center;
+    z-index: -1;
 }
 
 .footer > * {
