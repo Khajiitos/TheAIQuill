@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArticleInfoWithLike } from "@/types/articles";
-import Image from "next/image";
 import styles from "./article_entry.module.css";
 
 export default function ArticleEntry(props: {
