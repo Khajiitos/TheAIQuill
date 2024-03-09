@@ -25,7 +25,7 @@
 .logo {
     border-radius: 100%;
     color: var(--color-primary);
-    background-color: color-mix(in srgb, currentColor 50%, transparent 100%);
+    background-color: var(--color-primary-light);
     transition: scale 100ms ease-out;
 }
 
