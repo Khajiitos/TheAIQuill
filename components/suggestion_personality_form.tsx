@@ -45,18 +45,20 @@ export default function SuggestionPersonalityForm(props: {
 
     return (
         <form onSubmit={onSubmitPersonality} className={styles.form}>
-            <h2>Your AI personality suggestion</h2>
+            <div>
+                <h2>Your AI personality suggestion</h2>
 
-            <small id="error-personality"></small>
-            <small id="message-personality"></small>
+                <small id="error-personality"></small>
+                <small id="message-personality"></small>
 
-            <select name="personality">
-                {props.options.map((personality) => (
-                    <option key={personality}>{personality}</option>
-                ))}
-            </select>
+                <select name="personality">
+                    {props.options.map((personality) => (
+                        <option key={personality}>{personality}</option>
+                    ))}
+                </select>
 
-            <button type="submit">Submit personality suggestion</button>
+                <button type="submit">Submit personality suggestion</button>
+            </div>
         </form>
     );
 }

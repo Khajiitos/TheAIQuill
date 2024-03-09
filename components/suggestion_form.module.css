@@ -1,4 +1,6 @@
 .form {
+    display: grid;
+    place-content: center;
     margin: 2rem 0;
     padding: 1rem 2rem;
     border-radius: 1rem;
