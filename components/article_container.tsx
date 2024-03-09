@@ -100,7 +100,7 @@ export default function ArticleContainer() {
             {articles.length === 0 && !hasMore ? (
                 <small>Empty!</small>
             ) : (
-                <div className={styles.articleContainer}>
+                <section className={styles.articleContainer}>
                     {articles.map(
                         (articleInfo) =>
                             (articleInfo.article_header
@@ -119,7 +119,7 @@ export default function ArticleContainer() {
                                 ></ArticleEntry>
                             )
                     )}
-                </div>
+                </section>
             )}
             {hasMore ? (
                 <small id="loading-paragraph">Loading...</small>

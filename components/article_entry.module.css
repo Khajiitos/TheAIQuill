@@ -1,0 +1,102 @@
+.article {
+    display: block;
+
+    margin: 1.5rem auto;
+    padding: 1rem;
+    border-bottom: 2px solid var(--color-accent);
+    border-radius: 1rem 1rem 0 0;
+    background-color: color-mix(
+        in srgb,
+        var(--color-primary-light) 100%,
+        transparent 100%
+    );
+    color: var(--color-text);
+    text-decoration: none;
+    text-shadow: none;
+    text-align: left;
+    transition: all 150ms ease-out;
+}
+
+.article:hover,
+.article:focus {
+    outline: none;
+    opacity: 1;
+    background-color: var(--color-primary-light);
+}
+
+.article:hover p.description,
+.article:focus p.description {
+    white-space: wrap;
+}
+
+.article p {
+    margin: 0;
+}
+
+p.header {
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+p.description {
+    max-height: 4ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+    font-size: 0.8rem;
+    transition: all 150ms ease-out;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    color: var(--color-accent);
+}
+
+.info p {
+    font-size: 0.8rem;
+}
+
+.statistics {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+i.icon {
+    --_icon: url(); /* To overwrite */
+
+    display: block;
+    width: 1rem;
+    aspect-ratio: 1;
+    background-color: var(--color-accent);
+    mask-image: var(--_icon);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+}
+
+i.icon.icon_star {
+    --_icon: url("/img/icon-star-fill.svg");
+}
+
+i.icon.icon_comment {
+    --_icon: url("/img/icon-comment.svg");
+}
+
+i.icon.icon_time {
+    --_icon: url("/img/icon-time.svg");
+}

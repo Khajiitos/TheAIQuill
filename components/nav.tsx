@@ -13,7 +13,7 @@ export default function Navigation() {
                 <header>
                     <div className={styles.logoContainer}>
                         <div className={styles.logo}>
-                            <Link href="/">
+                            <Link href="/" onClick={() => setOpen(false)}>
                                 <Image
                                     src="/img/logo-64x64.png"
                                     alt="The AI Quill logo"

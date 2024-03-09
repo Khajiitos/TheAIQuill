@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArticleInfo, ArticleInfoWithLike } from "@/types/articles";
+import { ArticleInfoWithLike } from "@/types/articles";
 import Image from "next/image";
+import styles from "./article_entry.module.css";
 
 export default function ArticleEntry(props: {
     articleInfo: ArticleInfoWithLike;
@@ -28,38 +29,36 @@ export default function ArticleEntry(props: {
     const commentCount = props.articleInfo.comment_count;
 
     return (
-        <Link href={"article/" + props.articleInfo.slug}>
+        <Link
+            href={"article/" + props.articleInfo.slug}
+            className={styles.article}
+        >
             <div>
-                <p>{props.articleInfo.article_header}</p>
-                <p>{props.articleInfo.article_description}</p>
-                <div>
-                    <div>
-                        <p>
-                            {likeCount}
-                            <Image
-                                src="/img/icon-star-fill.svg"
-                                alt="Star icon"
-                                width={16}
-                                height={16}
-                            ></Image>
+                <p className={styles.header}>
+                    {props.articleInfo.article_header}
+                </p>
+                <p className={styles.description}>
+                    {props.articleInfo.article_description}
+                </p>
+                <div className={styles.info}>
+                    <div className={styles.statistics}>
+                        <p className={styles.stat}>
+                            <span>{likeCount}</span>
+                            <i
+                                className={`${styles.icon} ${styles.icon_star}`}
+                            ></i>
                         </p>
-                        <p>
-                            {commentCount}
-                            <Image
-                                src="/img/icon-comment.svg"
-                                alt="Comment icon"
-                                width={16}
-                                height={16}
-                            ></Image>
+                        <p className={styles.stat}>
+                            <span>{commentCount}</span>
+                            <i
+                                className={`${styles.icon} ${styles.icon_comment}`}
+                            ></i>
                         </p>
-                        <p>
-                            {minutesOfReading} min
-                            <Image
-                                src="/img/icon-time.svg"
-                                alt="Time icon"
-                                width={16}
-                                height={16}
-                            ></Image>
+                        <p className={styles.stat}>
+                            <span>{minutesOfReading} min</span>
+                            <i
+                                className={`${styles.icon} ${styles.icon_time}`}
+                            ></i>
                         </p>
                     </div>
                     <p title={timeZone}>{formattedDate}</p>
