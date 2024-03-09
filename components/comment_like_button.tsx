@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import styles from "./comment_like_button.module.css";
 
 export default function CommentLikeButton(props: {
     commentLiked: boolean;
@@ -34,15 +35,12 @@ export default function CommentLikeButton(props: {
     }
 
     return (
-        <div>
-            <p>{likeCount}</p>
-            <Image
-                src={liked ? "/img/icon-star-fill.svg" : "/img/icon-star.svg"}
-                alt="Like button"
-                width={24}
-                height={24}
+        <div className={styles.likeContainer}>
+            <span>{likeCount}</span>
+            <button
+                className={`${styles.like} ${liked ? styles.liked : ""}`}
                 onClick={onClick}
-            ></Image>
+            ></button>
         </div>
     );
 }

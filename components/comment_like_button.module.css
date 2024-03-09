@@ -1,0 +1,48 @@
+.likeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    color: var(--color-primary);
+    transition: all 150ms ease-out;
+}
+
+.likeContainer:hover,
+.likeContainer:focus-within {
+    background-color: var(--color-primary-light);
+}
+
+.like {
+    --_icon: url("/img/icon-star.svg");
+
+    display: block;
+    width: 1rem;
+    aspect-ratio: 1;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.25rem;
+    background-color: var(--color-accent);
+    mask-image: var(--_icon);
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    cursor: pointer;
+    transition: all 150ms ease-out;
+}
+
+.like:hover,
+.like:focus {
+    scale: 1.1;
+}
+
+.like:active {
+    scale: 0.9;
+}
+
+.like.liked {
+    --_icon: url("/img/icon-star-fill.svg");
+}

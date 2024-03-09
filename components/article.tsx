@@ -1,9 +1,9 @@
-import { ArticleInfo, ArticleInfoWithLike } from "@/types/articles";
+import { ArticleInfoWithLike } from "@/types/articles";
 import { parse } from "marked";
-import Image from "next/image";
 import LikeButton from "./like_button";
 import CommentSection from "./comment_section";
 import ArticleInnerStats from "./article_inner_stats";
+import styles from "./article.module.css";
 
 export default async function Article(props: {
     articleInfo: ArticleInfoWithLike | null;
@@ -23,7 +23,7 @@ export default async function Article(props: {
             ? parse(props.articleInfo.article_content)
             : "";
     return (
-        <article>
+        <article className={styles.article}>
             <header>
                 {
                     <h1>
@@ -41,16 +41,18 @@ export default async function Article(props: {
                     ></ArticleInnerStats>
                 )}
             </header>
-            <section dangerouslySetInnerHTML={{ __html: innerHTML }}></section>
+
+            <section
+                dangerouslySetInnerHTML={{ __html: innerHTML }}
+                className={styles.content}
+            ></section>
 
             {props.articleInfo && (
-                <aside>
-                    <LikeButton
-                        articleId={props.articleInfo.article_id}
-                        articleLiked={props.articleInfo.liked}
-                        likeCount={props.articleInfo.like_count}
-                    ></LikeButton>
-                </aside>
+                <LikeButton
+                    articleId={props.articleInfo.article_id}
+                    articleLiked={props.articleInfo.liked}
+                    likeCount={props.articleInfo.like_count}
+                ></LikeButton>
             )}
             {props.articleInfo && (
                 <CommentSection

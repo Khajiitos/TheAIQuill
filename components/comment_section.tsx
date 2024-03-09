@@ -2,6 +2,7 @@
 import { CommentInfoWithLike } from "@/types/comments";
 import { FormEvent, useEffect, useState } from "react";
 import CommentEntry from "./comment_entry";
+import styles from "./comment_section.module.css";
 
 export default function CommentSection(props: { articleId: number }) {
     const [comments, setComments] = useState<CommentInfoWithLike[] | null>(
@@ -75,67 +76,49 @@ export default function CommentSection(props: { articleId: number }) {
 
     return (
         <>
-            <aside>
+            <section className={styles.commentSection}>
                 <p>
                     Do you have anything to say about this article?
                     <br />
                     Leave a comment!
                 </p>
 
-                {
-                    <>
-                        <form onSubmit={onAddComment}>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            <label htmlFor="author">
-                                                Author:
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <input
-                                                type="text"
-                                                name="author"
-                                                placeholder="Anonymous"
-                                            />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <label htmlFor="content">
-                                                Content:
-                                            </label>
-                                        </td>
-                                        <td>
-                                            <input
-                                                name="content"
-                                                placeholder="Comment..."
-                                            />
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <button>Comment</button>
-                            {addCommentMessage &&
-                                (addCommentMessageError ? (
-                                    <p>{addCommentMessage}</p>
-                                ) : (
-                                    <p>{addCommentMessage}</p>
-                                ))}
-                        </form>
-                    </>
-                }
-            </aside>
-            <aside>
-                <p>Comments</p>
+                <form onSubmit={onAddComment} className={styles.commentForm}>
+                    {addCommentMessage &&
+                        (addCommentMessageError ? (
+                            <small>{addCommentMessage}</small>
+                        ) : (
+                            <small>{addCommentMessage}</small>
+                        ))}
+
+                    <div className={`${styles.field} ${styles.author}`}>
+                        <label htmlFor="author">Author:</label>
+                        <input
+                            type="text"
+                            name="author"
+                            placeholder="Anonymous"
+                        />
+                    </div>
+
+                    <div className={styles.wrapper}>
+                        <div className={styles.field}>
+                            <label htmlFor="content">Content:</label>
+                            <input name="content" placeholder="Comment..." />
+                        </div>
+                        <button>Comment</button>
+                    </div>
+                </form>
+            </section>
+
+            <section className={styles.comments}>
+                <h2>Comments</h2>
                 {comments !== null && (
                     <>
                         {comments.length === 0 && (
-                            <p>
+                            <small className={styles.noComments}>
                                 No comments!
                                 <br /> Be the first one to comment.
-                            </p>
+                            </small>
                         )}
                     </>
                 )}
@@ -146,7 +129,7 @@ export default function CommentSection(props: { articleId: number }) {
                         articleId={props.articleId}
                     ></CommentEntry>
                 ))}
-            </aside>
+            </section>
         </>
     );
 }

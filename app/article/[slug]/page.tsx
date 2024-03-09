@@ -3,6 +3,7 @@ import { ArticleInfo, ArticleInfoWithLike } from "@/types/articles";
 import { Metadata } from "next";
 import { query } from "@/lib/db";
 import { headers } from "next/headers";
+import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -50,7 +51,7 @@ export default async function ArticlePage(props: { params: { slug: string } }) {
         response.length >= 1 ? response[0] : null;
 
     return (
-        <main>
+        <main className={styles.main}>
             <Article articleInfo={articleInfo}></Article>
         </main>
     );

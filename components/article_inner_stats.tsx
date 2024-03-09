@@ -1,6 +1,5 @@
 "use client";
-
-import Image from "next/image";
+import styles from "./article_inner_stats.module.css";
 
 export default function ArticleInnerStats(props: {
     minutesOfReading: number;
@@ -21,39 +20,23 @@ export default function ArticleInnerStats(props: {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     return (
-        <aside>
-            <div>
-                <p title={timeZone}>{formattedDate}</p>
-                <div>
-                    <p>
-                        {props.likeCount}
-                        <Image
-                            src="/img/icon-star-fill.svg"
-                            alt="Star icon"
-                            width={16}
-                            height={16}
-                        ></Image>
-                    </p>
-                    <p>
-                        {props.commentCount}
-                        <Image
-                            src="/img/icon-comment.svg"
-                            alt="Comment icon"
-                            width={16}
-                            height={16}
-                        ></Image>
-                    </p>
-                    <p>
-                        {props.minutesOfReading} min
-                        <Image
-                            src="/img/icon-time.svg"
-                            alt="Time icon"
-                            width={16}
-                            height={16}
-                        ></Image>
-                    </p>
-                </div>
+        <div className={styles.statsContainer}>
+            <small title={timeZone}>{formattedDate}</small>
+            <div className={styles.stats}>
+                <small className={styles.stat}>
+                    <span>{props.likeCount}</span>
+                    <i className={`${styles.icon} ${styles.icon_star}`}></i>
+                </small>
+                <small className={styles.stat}>
+                    <span>{props.commentCount}</span>
+
+                    <i className={`${styles.icon} ${styles.icon_comment}`}></i>
+                </small>
+                <small className={styles.stat}>
+                    <span>{props.minutesOfReading} min</span>
+                    <i className={`${styles.icon} ${styles.icon_time}`}></i>
+                </small>
             </div>
-        </aside>
+        </div>
     );
 }

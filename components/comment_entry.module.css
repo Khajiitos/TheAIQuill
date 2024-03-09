@@ -1,0 +1,31 @@
+.comment {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: color-mix(
+        in srgb,
+        var(--color-secondary) 10%,
+        transparent 100%
+    );
+}
+
+.comment small {
+    margin: 0;
+}
+
+.author {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.content {
+    margin: 0.5rem 0;
+    text-wrap: balance;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-accent);
+}

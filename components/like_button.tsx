@@ -1,6 +1,6 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
+import styles from "./like_button.module.css";
 
 export default function LikeButton(props: {
     articleLiked: boolean;
@@ -32,25 +32,20 @@ export default function LikeButton(props: {
     }
 
     return (
-        <div>
+        <section className={styles.likeSection}>
             <p>
                 Did you like this article?
                 <br />
                 Rate it by leaving a like!
             </p>
 
-            <div>
-                <Image
-                    src={
-                        liked ? "/img/icon-star-fill.svg" : "/img/icon-star.svg"
-                    }
-                    alt="Like button"
-                    width={32}
-                    height={32}
+            <div className={styles.likeContainer}>
+                <button
+                    className={`${styles.like} ${liked ? styles.liked : ""}`}
                     onClick={onClick}
-                ></Image>
-                <p>{likeCount}</p>
+                ></button>
+                <span>{likeCount}</span>
             </div>
-        </div>
+        </section>
     );
 }

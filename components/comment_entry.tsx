@@ -1,7 +1,7 @@
 "use client";
 import { CommentInfoWithLike } from "@/types/comments";
-import Image from "next/image";
 import CommentLikeButton from "./comment_like_button";
+import styles from "./comment_entry.module.css";
 
 export default function CommentEntry(props: {
     commentInfo: CommentInfoWithLike;
@@ -23,11 +23,11 @@ export default function CommentEntry(props: {
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
     return (
-        <div>
-            <p>{props.commentInfo.author}</p>
-            <p>{props.commentInfo.content}</p>
-            <div>
-                <p title={timeZone}>{formattedDate}</p>
+        <div className={styles.comment}>
+            <small className={styles.author}>{props.commentInfo.author}</small>
+            <p className={styles.content}>{props.commentInfo.content}</p>
+            <div className={styles.stats}>
+                <small title={timeZone}>{formattedDate}</small>
                 <CommentLikeButton
                     commentId={props.commentInfo.id}
                     commentLiked={props.commentInfo.comment_liked}

@@ -1,21 +1,29 @@
-.form {
-    display: grid;
-    place-content: center;
-    margin: 2rem 0;
+.commentSection {
     padding: 1rem 2rem;
     border-radius: 1rem;
     background-color: var(--color-primary-light);
-    text-align: center;
 }
 
-.form h2 {
-    font-size: 1.4rem;
-    color: var(--color-primary);
+.commentForm small {
+    margin: 1rem 0;
 }
 
-.form input {
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10%;
     width: 100%;
-    margin: auto;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.field label {
+    width: 20%;
+}
+
+.field input {
+    width: 70%;
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 2rem;
@@ -26,12 +34,12 @@
     transition: all 150ms ease-out;
 }
 
-.form input::placeholder {
+.field input::placeholder {
     color: var(--color-text);
     opacity: 0.6;
 }
 
-.form input[value=""] {
+.field input[value=""] {
     background-color: color-mix(
         in srgb,
         var(--color-secondary) 100%,
@@ -39,18 +47,19 @@
     );
 }
 
-.form input:hover {
+.field input:hover {
     scale: 1.025;
 }
 
-.form input:focus {
+.field input:focus {
     outline: none;
     box-shadow: 0 0 0.25rem 1px var(--color-accent);
 }
 
-.form button {
+.commentForm button {
     --_bg-opacity: 50%;
     width: 100%;
+    max-width: 10rem;
     margin: 1rem auto;
     padding: 1rem 0.5rem;
     border: none;
@@ -67,15 +76,44 @@
     transition: all 100ms ease-out;
 }
 
-.form button:hover,
-.form button:focus {
+.commentForm button:hover,
+.commentForm button:focus {
     --_bg-opacity: 100%;
     scale: 1.025;
     outline: none;
 }
 
-.form button:active {
+.commentForm button:active {
     background-color: var(--color-secondary);
     box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5),
         0 0 0.125rem 0.125rem var(--color-secondary);
+}
+
+.comments h2 {
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.noComments {
+    opacity: 0.5;
+    text-align: center;
+}
+
+@media (width >= 700px) {
+    .field {
+        justify-content: start;
+        gap: 1rem;
+    }
+
+    .field label {
+        width: 5rem;
+    }
+
+    .wrapper {
+        display: flex;
+    }
+
+    .field.author input {
+        max-width: 15rem;
+    }
 }
