@@ -1,0 +1,50 @@
+.main {
+    padding: 1rem;
+    text-align: center;
+}
+
+ul.themes {
+    padding: 0;
+}
+
+.themes > li {
+    list-style-type: none;
+    margin: 1rem 0;
+}
+
+.theme {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 40rem;
+    margin: auto;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--color-secondary);
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5);
+    color: var(--color-text);
+    text-align: left;
+    cursor: pointer;
+    transition: all 150ms ease-out;
+    outline: none;
+}
+
+.theme:hover,
+.theme:focus-within {
+    scale: 1.025;
+}
+
+.theme.selected {
+    background-color: var(--color-accent);
+    box-shadow: 0 0 0.125rem 0.125rem var(--color-accent),
+        0 0.125rem 0.125rem rgba(0, 0, 0, 0.5);
+    cursor: auto;
+}
+
+.sample {
+    width: 3rem;
+    aspect-ratio: 1;
+    border: 2px solid currentColor;
+    border-radius: 100%;
+}

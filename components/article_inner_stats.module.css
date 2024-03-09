@@ -1,0 +1,47 @@
+.statsContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    background-color: var(--color-primary-light);
+    color: var(--color-accent);
+}
+
+.statsContainer small {
+    margin: 0;
+}
+
+.stats,
+.stat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+i.icon {
+    --_icon: url(); /* To overwrite */
+
+    display: block;
+    width: 1rem;
+    aspect-ratio: 1;
+    background-color: var(--color-accent);
+    mask-image: var(--_icon);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+}
+
+i.icon.icon_star {
+    --_icon: url("/img/icon-star-fill.svg");
+}
+
+i.icon.icon_comment {
+    --_icon: url("/img/icon-comment.svg");
+}
+
+i.icon.icon_time {
+    --_icon: url("/img/icon-time.svg");
+}

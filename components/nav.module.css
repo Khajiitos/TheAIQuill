@@ -1,0 +1,127 @@
+.nav {
+    position: sticky;
+    top: 0;
+    isolation: isolate;
+    z-index: 1000;
+    box-shadow: 0 0.125rem 0.125rem var(--color-primary-light);
+    transition: all 150ms ease-out;
+}
+
+.nav > header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--color-primary);
+    background-color: var(--color-background);
+    z-index: 1;
+    transition: all 150ms ease-out;
+}
+
+.logoContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo {
+    border-radius: 100%;
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    user-select: none;
+    transition: scale 100ms ease-out;
+}
+
+.logo:hover,
+.logo:focus-within {
+    scale: 1.05;
+}
+
+.hamburger {
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 150ms ease-out, rotate 200ms ease-out;
+}
+
+.hamburger:hover,
+.hamburger:focus-within {
+    scale: 1.05;
+    opacity: 0.9;
+}
+
+.hamburger:active {
+    rotate: 360deg;
+}
+
+.nav:has(.dropout) > header {
+    border-bottom-color: var(--color-secondary);
+}
+
+/* --- */
+
+.dropout {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    translate: 0 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-background);
+    z-index: -1;
+}
+
+.dropout > li {
+    display: block;
+    margin: 0;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-secondary);
+    list-style-type: none;
+    text-align: center;
+}
+
+.dropout a {
+    color: var(--color-text);
+    text-shadow: none;
+}
+
+.backdrop {
+    position: fixed;
+    z-index: 100;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+
+    transition: opacity 150ms ease-out;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.backdrop {
+    animation: fadeIn 150ms ease-out;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0%);
+    }
+}
+
+.dropout {
+    animation: slideIn 150ms ease-out;
+}
