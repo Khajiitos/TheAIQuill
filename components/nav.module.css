@@ -26,6 +26,7 @@
     border-radius: 100%;
     color: var(--color-primary);
     background-color: var(--color-primary-light);
+    user-select: none;
     transition: scale 100ms ease-out;
 }
 
@@ -36,6 +37,7 @@
 
 .hamburger {
     cursor: pointer;
+    user-select: none;
     transition: opacity 150ms ease-out, rotate 200ms ease-out;
 }
 
