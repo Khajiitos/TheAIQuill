@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { getSessionData } from "@/lib/session";
 import { redirect } from "@/node_modules/next/navigation";
+import styles from "./page.module.css";
 
 export default async function AdminPage() {
     const session = await getSessionData(cookies());
@@ -10,10 +11,8 @@ export default async function AdminPage() {
     }
 
     return (
-        <main>
-            <h3>Latest articles</h3>
-
-            <div></div>
+        <main className={styles.main}>
+            <h1>Latest articles</h1>
         </main>
     );
 }
