@@ -1,4 +1,5 @@
 import { query } from "@/lib/db";
+import styles from "./page.module.css";
 
 export const dynamic = "force-dynamic";
 
@@ -34,54 +35,62 @@ export default async function SuggestionsPage() {
     );
 
     return (
-        <main>
+        <main className={styles.main}>
             <h1>Suggestions</h1>
 
-            <div>
-                <p>Tag</p>
+            <div className={styles.displays}>
+                <section className={styles.display}>
+                    <h2>Tag</h2>
 
-                {suggestionResponse.length === 0 ? (
-                    <p>No suggested tags!</p>
-                ) : (
-                    <>
-                        {suggestionResponse.map((obj) => (
-                            <div key={obj.tag}>
-                                <div>{obj.tag}</div>
-                                <div>
-                                    {(
-                                        (obj.tag_count / totalCount) *
-                                        100
-                                    ).toFixed(1)}
-                                    %
-                                </div>
-                            </div>
-                        ))}
-                    </>
-                )}
-            </div>
+                    {suggestionResponse.length === 0 ? (
+                        <small className={styles.disEmpty}>
+                            No suggested tags!
+                        </small>
+                    ) : (
+                        <ul className={styles.suggestions}>
+                            {suggestionResponse.map((obj) => (
+                                <li key={obj.tag}>
+                                    <div className={styles.name}>{obj.tag}</div>
+                                    <div className={styles.chance}>
+                                        {(
+                                            (obj.tag_count / totalCount) *
+                                            100
+                                        ).toFixed(1)}
+                                        %
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </section>
 
-            <div>
-                <p>Personality</p>
+                <section className={styles.display}>
+                    <h2>Personality</h2>
 
-                {suggestionResponse.length === 0 ? (
-                    <p>No suggested personalities!</p>
-                ) : (
-                    <>
-                        {suggestionPersonalityResponse.map((obj) => (
-                            <div key={obj.personality}>
-                                <div>{obj.personality}</div>
-                                <div>
-                                    {(
-                                        (obj.personality_count /
-                                            totalPersonalityCount) *
-                                        100
-                                    ).toFixed(1)}
-                                    %
-                                </div>
-                            </div>
-                        ))}
-                    </>
-                )}
+                    {suggestionResponse.length === 0 ? (
+                        <small className={styles.disEmpty}>
+                            No suggested personalities!
+                        </small>
+                    ) : (
+                        <ul className={styles.suggestions}>
+                            {suggestionPersonalityResponse.map((obj) => (
+                                <li key={obj.personality}>
+                                    <div className={styles.name}>
+                                        {obj.personality}
+                                    </div>
+                                    <div className={styles.chance}>
+                                        {(
+                                            (obj.personality_count /
+                                                totalPersonalityCount) *
+                                            100
+                                        ).toFixed(1)}
+                                        %
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </section>
             </div>
         </main>
     );
