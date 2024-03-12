@@ -1,17 +1,14 @@
-import ArticleContainer from '@/components/article_container';
-import { ArticleInfo } from '@/types/articles';
-import { query } from '@/lib/db';
+import ArticleContainer from "@/components/article_container";
+import styles from "./page.module.css";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-export default async function Home() {  
-  return (
-    <main className="">
-      <h3 className='text-center font-semibold text-4xl m-5 text-text'>Latest articles</h3>
+export default async function Home() {
+    return (
+        <main className={styles.main}>
+            <h1>Latest articles</h1>
 
-      <div className='flex justify-center content-center flex-row container-none overflow-hidden'>
-        <ArticleContainer></ArticleContainer>
-      </div>
-    </main>
-  )
+            <ArticleContainer></ArticleContainer>
+        </main>
+    );
 }

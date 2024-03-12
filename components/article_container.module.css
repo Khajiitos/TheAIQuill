@@ -1,0 +1,17 @@
+@media (width >= 700px) {
+    .articleContainer {
+        display: grid;
+        align-items: start;
+        justify-content: baseline;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 2rem;
+        margin-top: 2rem;
+    }
+}
+
+@media (width >= 900px) {
+    .articleContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

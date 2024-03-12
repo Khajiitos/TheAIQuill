@@ -1,128 +1,153 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@font-face {
+    font-family: "Baloo";
+    src: url("/font/Baloo2-VariableFont_wght.ttf");
+}
 
-.theme-sutac {
+:root:has(.theme-sutac) {
     --color-text: #eff0eb;
     --color-background: #0b0c05;
-    --color-background-lighter: #0d1107;
     --color-primary: #c1c4b1;
     --color-secondary: #397732;
     --color-accent: #54b856;
-    --color-entry: #1d1e19;
-    --color-entry-hover: #494a41;
-    --color-input: #24351d;
-    --svg-color-filter: brightness(0) saturate(100%) invert(56%) sepia(9%) saturate(1998%) hue-rotate(70deg) brightness(96%) contrast(106%);
 }
 
-.theme-twilight-serenity {
+:root:has(.theme-twilight-serenity) {
     --color-text: #ffffff;
     --color-background: #1b1e28;
-    --color-background-lighter: #2c303f;
     --color-primary: #e5a63b;
     --color-secondary: #575757;
     --color-accent: #6e72a4;
-    --color-entry: #393d4f;
-    --color-entry-hover: #565a6f;
-    --color-input: #10141d;
-    --svg-color-filter: brightness(0) saturate(100%) invert(45%) sepia(23%) saturate(635%) hue-rotate(198deg) brightness(96%) contrast(97%);
 }
 
-.theme-dark-elegance {
+:root:has(.theme-dark-elegance) {
     --color-text: #d5d5d5;
     --color-background: #2c2c2c;
-    --color-background-lighter: #424242;
     --color-primary: #9e72b8;
     --color-secondary: #4a4a4a;
     --color-accent: #ff6f61;
-    --color-entry: #333333;
-    --color-entry-hover: #555555;
-    --color-input: #1f1f1f;
-    --svg-color-filter: brightness(0) saturate(100%) invert(75%) sepia(63%) saturate(5372%) hue-rotate(323deg) brightness(105%) contrast(101%);
 }
 
-.theme-modern-monochrome {
+:root:has(.theme-modern-monochrome) {
     --color-text: #f3f3f3;
     --color-background: #2e2e2e;
-    --color-background-lighter: #3c3c3c;
     --color-primary: #ff8c42;
     --color-secondary: #525252;
     --color-accent: #00bcd4;
-    --color-entry: #353535;
-    --color-entry-hover: #4d4d4d;
-    --color-input: #262626;
-    --svg-color-filter: brightness(0) saturate(100%) invert(58%) sepia(40%) saturate(6442%) hue-rotate(153deg) brightness(104%) contrast(101%);
 }
 
-.theme-light-breeze {
+:root:has(.theme-light-breeze) {
     --color-text: #81d4fa;
     --color-background: #ffffff;
-    --color-background-lighter: #f5f5f5;
     --color-primary: #3949ab;
     --color-secondary: #616161;
     --color-accent: #ff4081;
-    --color-entry: #eeeeee;
-    --color-entry-hover: #f0f0f0;
-    --color-input: #cfd8dc;
-    --svg-color-filter: brightness(0) saturate(100%) invert(57%) sepia(82%) saturate(5264%) hue-rotate(316deg) brightness(100%) contrast(104%);
 }
 
-.theme-frosty-blue {
+:root:has(.theme-frosty-blue) {
     --color-text: #f5f5f5;
     --color-background: #1e1e1e;
-    --color-background-lighter: #2a2a2a;
     --color-primary: #e57373;
     --color-secondary: #616161;
     --color-accent: #64b5f6;
-    --color-entry: #363636;
-    --color-entry-hover: #4b4b4b;
-    --color-input: #252525;
-    --svg-color-filter: brightness(0) saturate(100%) invert(58%) sepia(94%) saturate(692%) hue-rotate(181deg) brightness(104%) contrast(93%);
 }
 
-.colored-svg {
-    filter: var(--svg-color-filter);
+:root {
+    --color-primary-light: color-mix(
+        in srgb,
+        var(--color-primary) 20%,
+        transparent 100%
+    );
 }
 
-@font-face {
-    font-family: 'Baloo';
-    src: url('/font/Baloo2-VariableFont_wght.ttf');
-}
+/* --- */
 
 * {
-    font-family: 'Baloo', sans-serif;
+    box-sizing: border-box;
 }
 
-article p {
-    margin: 12px 0 12px 0;
+html {
+    font-family: "Baloo", sans-serif;
+    color: var(--color-text);
 }
 
-article h1 {
+body {
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    background-color: var(--color-background);
+}
+
+/* --- */
+
+h1 {
     font-size: 2rem;
     font-weight: bold;
 }
 
-article h2 {
+h2 {
     font-size: 1.75rem;
     font-weight: bold;
 }
 
-article h3 {
+h3 {
     font-size: 1.5rem;
     font-weight: bold;
 }
 
-article h4 {
+h4 {
     font-size: 1.25rem;
     font-weight: bold;
 }
 
-article h5 {
+h5 {
     font-size: 1.125rem;
     font-weight: bold;
 }
 
-article h6 {
+h6 {
     font-size: 1rem;
     font-weight: bold;
+}
+
+p {
+    font-size: 1rem;
+}
+
+small {
+    display: block;
+    font-size: 0.8rem;
+    margin: 1em;
+}
+
+/* --- */
+
+a {
+    color: var(--color-accent);
+    text-shadow: 0 0 0.125rem
+        color-mix(in srgb, currentColor 100%, transparent 50%);
+}
+
+a:hover,
+a:focus {
+    opacity: 0.8;
+}
+
+/* --- */
+
+.desktop {
+    display: none;
+}
+
+.mobile {
+    display: block;
+}
+
+@media (width >= 700px) {
+    .desktop {
+        display: block;
+    }
+
+    .mobile {
+        display: none;
+    }
 }

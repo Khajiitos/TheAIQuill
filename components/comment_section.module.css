@@ -1,0 +1,119 @@
+.commentSection {
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    background-color: var(--color-primary-light);
+}
+
+.commentForm small {
+    margin: 1rem 0;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10%;
+    width: 100%;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.field label {
+    width: 20%;
+}
+
+.field input {
+    width: 70%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5);
+    font-size: 0.8em;
+    transition: all 150ms ease-out;
+}
+
+.field input::placeholder {
+    color: var(--color-text);
+    opacity: 0.6;
+}
+
+.field input[value=""] {
+    background-color: color-mix(
+        in srgb,
+        var(--color-secondary) 100%,
+        transparent 75%
+    );
+}
+
+.field input:hover {
+    scale: 1.025;
+}
+
+.field input:focus {
+    outline: none;
+    box-shadow: 0 0 0.25rem 1px var(--color-accent);
+}
+
+.commentForm button {
+    --_bg-opacity: 50%;
+    width: 100%;
+    max-width: 10rem;
+    margin: 1rem auto;
+    padding: 1rem 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5);
+    background-color: color-mix(
+        in srgb,
+        var(--color-secondary) var(--_bg-opacity),
+        transparent 100%
+    );
+    color: var(--color-text);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 100ms ease-out;
+}
+
+.commentForm button:hover,
+.commentForm button:focus {
+    --_bg-opacity: 100%;
+    scale: 1.025;
+    outline: none;
+}
+
+.commentForm button:active {
+    background-color: var(--color-secondary);
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5),
+        0 0 0.125rem 0.125rem var(--color-secondary);
+}
+
+.comments h2 {
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.noComments {
+    opacity: 0.5;
+    text-align: center;
+}
+
+@media (width >= 700px) {
+    .field {
+        justify-content: start;
+        gap: 1rem;
+    }
+
+    .field label {
+        width: 5rem;
+    }
+
+    .wrapper {
+        display: flex;
+    }
+
+    .field.author input {
+        max-width: 15rem;
+    }
+}

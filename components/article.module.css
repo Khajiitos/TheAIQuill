@@ -1,0 +1,21 @@
+.article header {
+    margin-bottom: 2rem;
+}
+
+.article h1 {
+    margin-top: 0;
+}
+
+.content {
+    text-wrap: balance;
+    text-align: justify;
+}
+
+.content strong {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.content i {
+    color: var(--color-primary);
+}

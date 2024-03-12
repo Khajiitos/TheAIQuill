@@ -1,0 +1,34 @@
+.search {
+    width: clamp(20%, 20rem, 90%);
+    margin: auto;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 2rem;
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.5);
+    font-size: 0.8em;
+    transition: all 150ms ease-out;
+}
+
+.search::placeholder {
+    color: var(--color-text);
+    opacity: 0.6;
+}
+
+.search[value=""] {
+    background-color: color-mix(
+        in srgb,
+        var(--color-secondary) 100%,
+        transparent 75%
+    );
+}
+
+.search:hover {
+    scale: 1.05;
+}
+
+.search:focus {
+    outline: none;
+    box-shadow: 0 0 0.25rem 1px var(--color-accent);
+}
