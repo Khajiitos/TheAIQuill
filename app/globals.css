@@ -3,7 +3,7 @@
     src: url("/font/Baloo2-VariableFont_wght.ttf");
 }
 
-:root:has(.theme-sutac) {
+:root /* :has(.theme-sutac) */ {
     --color-text: #eff0eb;
     --color-background: #0b0c05;
     --color-primary: #c1c4b1;

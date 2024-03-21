@@ -29,7 +29,7 @@ export default function CommentSection(props: { articleId: number }) {
                     setComments(comments);
                 });
         }
-    });
+    }, [comments]);
 
     async function onAddComment(e: FormEvent) {
         e.preventDefault();
