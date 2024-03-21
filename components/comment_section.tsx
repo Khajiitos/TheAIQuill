@@ -15,11 +15,7 @@ export default function CommentSection(props: { articleId: number }) {
         useState<boolean>(false);
 
     useEffect(() => {
-        console.log("UE activated");
-
         if (comments === null) {
-            console.log("Fetched new comments");
-
             fetch("/api/comments?articleId=" + props.articleId)
                 .then((res) => res.json())
                 .then((json) => {
